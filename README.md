@@ -39,6 +39,94 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Pushing Changes to GitHub
+
+This project is connected to GitHub at: [https://github.com/RonLevTab/-portfolio](https://github.com/RonLevTab/-portfolio)
+
+### Making Updates
+
+When you make changes to your code and want to push them to GitHub:
+
+1. **Stage your changes:**
+   ```bash
+   git add .
+   ```
+
+2. **Commit your changes:**
+   ```bash
+   git commit -m "Your descriptive commit message"
+   ```
+
+3. **Push to GitHub:**
+   ```bash
+   git push
+   ```
+
+### First Time Setup (Already Completed)
+
+If you need to set up a new repository:
+
+1. **Initialize Git:**
+   ```bash
+   git init
+   ```
+
+2. **Configure user (for this repository):**
+   ```bash
+   git config user.name "RonLevTab"
+   git config user.email "Ronlevtab@gmail.com"
+   git config commit.gpgsign false
+   ```
+
+3. **Add all files:**
+   ```bash
+   git add .
+   ```
+
+4. **Create initial commit:**
+   ```bash
+   git commit -m "Initial commit"
+   ```
+
+5. **Connect to GitHub:**
+   ```bash
+   git remote add origin git@github.com:RonLevTab/-portfolio.git
+   ```
+
+6. **Push to GitHub:**
+   ```bash
+   git push -u origin master
+   ```
+
+### SSH Key Setup (Already Completed)
+
+If you need to set up SSH keys for a new machine:
+
+1. **Generate SSH key:**
+   ```bash
+   ssh-keygen -t ed25519 -C "Ronlevtab@gmail.com" -f ~/.ssh/id_ed25519_personal
+   ```
+
+2. **Display your public key:**
+   ```bash
+   cat ~/.ssh/id_ed25519_personal.pub
+   ```
+
+3. **Add the key to GitHub:**
+   - Go to [GitHub SSH Settings](https://github.com/settings/keys)
+   - Click "New SSH key"
+   - Paste your public key
+   - Save
+
+4. **Create SSH config file** (`~/.ssh/config`):
+   ```
+   Host github.com
+     HostName github.com
+     User git
+     IdentityFile ~/.ssh/id_ed25519_personal
+     IdentitiesOnly yes
+   ```
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
