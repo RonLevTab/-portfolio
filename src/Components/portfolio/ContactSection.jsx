@@ -5,42 +5,24 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Github, 
+  Linkedin, 
   MessageSquare,
   Heart
 } from 'lucide-react';
+import { contactData } from '../../data';
 
 export default function ContactSection() {
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "Ronlevtab@gmail.com",
-      href: "mailto:Ronlevtab@gmail.com",
-      color: "from-blue-500 to-indigo-500"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+31 6 48690335",
-      href: "tel:+31648690335",
-      color: "from-green-500 to-teal-500"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Breda, Netherlands",
-      href: "#",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      value: "ronlev-tabuchov",
-      href: "https://github.com/ronlev-tabuchov",
-      color: "from-gray-600 to-gray-700"
-    }
-  ];
+  const iconMap = {
+    'Mail': Mail,
+    'Phone': Phone,
+    'MapPin': MapPin,
+    'Linkedin': Linkedin
+  };
+
+  const contactInfo = contactData.contactInfo.map(contact => ({
+    ...contact,
+    icon: iconMap[contact.icon]
+  }));
 
   return (
     <section id="contact" className="min-h-screen py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
@@ -53,10 +35,10 @@ export default function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Let's Connect
+            {contactData.title}
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Ready to collaborate on innovative AI and data science projects
+            {contactData.description}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-400 mx-auto rounded-full mt-6"></div>
         </motion.div>
@@ -73,12 +55,10 @@ export default function ContactSection() {
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-6 flex items-center justify-center gap-3">
                 <MessageSquare className="w-6 h-6" />
-                Get In Touch
+                {contactData.subtitle}
               </h3>
               <p className="text-slate-300 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-                I'm always interested in discussing new opportunities, innovative projects, 
-                and collaborations in data science and AI. Whether you're looking for a 
-                passionate student developer or want to connect professionally, I'd love to hear from you.
+                {contactData.message}
               </p>
             </div>
 
@@ -129,10 +109,10 @@ export default function ContactSection() {
           className="text-center mt-16 pt-8 border-t border-white/20"
         >
           <p className="text-slate-400 flex items-center justify-center gap-2">
-            Made with <Heart className="w-4 h-4 text-red-400" /> by Ron Lev Tabuchov
+            Made with <Heart className="w-4 h-4 text-red-400" /> by {contactData.footer.name}
           </p>
           <p className="text-slate-500 text-sm mt-2">
-            © {new Date().getFullYear()} All rights reserved
+            {contactData.footer.copyright}
           </p>
         </motion.div>
       </div>

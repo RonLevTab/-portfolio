@@ -1,57 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, Badge } from '../../ui';
-import { MapPin, Calendar, Briefcase, Shield, Star } from 'lucide-react';
+import { MapPin, Calendar, Briefcase, Shield, Star, ShieldCheck } from 'lucide-react';
+import { experienceData } from '../../data';
 
 export default function ExperienceSection() {
-  const experiences = [
-    {
-      title: "Sales Assistant",
-      company: "Mango",
-      location: "Breda, Netherlands",
-      period: "Sep 2023 – Present",
-      icon: Briefcase,
-      color: "from-blue-500 to-indigo-500",
-      current: true,
-      description: "Deliver excellent customer service while managing multiple priorities in fast-paced retail environment",
-      achievements: [
-        "Excellent customer service delivery",
-        "Multi-priority management",
-        "Fast-paced environment handling"
-      ]
-    },
-    {
-      title: "Head Cashier",
-      company: "Zara",
-      location: "Breda, Netherlands", 
-      period: "2020 – 2023",
-      icon: Star,
-      color: "from-purple-500 to-pink-500",
-      description: "Managed financial transactions and cash flow, trained team members, ensured operational efficiency",
-      achievements: [
-        "Financial transaction management",
-        "Team member training",
-        "Operational efficiency optimization",
-        "Leadership in high-pressure environment"
-      ]
-    },
-    {
-      title: "Search and Rescue Combat Officer",
-      company: "Israel Defense Forces",
-      location: "Israel",
-      period: "2014 – 2018",
-      icon: Shield,
-      color: "from-green-500 to-teal-500",
-      description: "Led squad of 12 soldiers after completing Officers Course, managing complex operations under pressure",
-      achievements: [
-        "Led squad of 12 soldiers",
-        "Complex operations management",
-        "Stress management in critical situations",
-        "Decision-making under pressure",
-        "Advanced combat and rescue training"
-      ]
-    }
-  ];
+  const iconMap = {
+    'Briefcase': Briefcase,
+    'Star': Star,
+    'Shield': Shield,
+    'ShieldCheck': ShieldCheck
+  };
+
+  const experiences = experienceData.experiences.map(exp => ({
+    ...exp,
+    icon: iconMap[exp.icon]
+  }));
 
   return (
     <section id="experience" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
@@ -64,10 +28,10 @@ export default function ExperienceSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Professional Experience
+            {experienceData.title}
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Building leadership skills through diverse roles across retail, military, and academic environments
+            {experienceData.description}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mt-6"></div>
         </motion.div>

@@ -33,19 +33,35 @@ export const experienceData = {
       ]
     },
     {
+      title: "Security Guard at the Ministry of Defence",
+      company: "Ministry of Defence",
+      location: "Tel Aviv, Israel",
+      period: "2019 – 2020",
+      icon: "ShieldCheck",
+      color: "from-orange-500 to-red-500",
+      description: "Provided high-level security for government facilities, government officials, and handling classified operations. Completed advanced security and first aid training at the College of Counter-Terrorism.",
+      achievements: [
+        "High-level security for government facilities",
+        "Protection of government officials",
+        "Classified operations handling",
+        "Advanced security training",
+        "First aid certification from College of Counter-Terrorism"
+      ]
+    },
+    {
       title: "Search and Rescue Combat Officer",
       company: "Israel Defense Forces",
       location: "Israel",
       period: "2014 – 2018",
       icon: "Shield",
       color: "from-green-500 to-teal-500",
-      description: "Led squad of 12 soldiers after completing Officers Course, managing complex operations under pressure",
+      description: "Led platoons after completing Officers Course, managing complex operations under pressure",
       achievements: [
-        "Led squad of 12 soldiers",
+        "Led operative squads, trained soldiers and officers",
         "Complex operations management",
         "Stress management in critical situations",
         "Decision-making under pressure",
-        "Advanced combat and rescue training"
+        "Advanced combat and rescue skills"
       ]
     }
   ]

@@ -1,54 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, Badge } from '../../ui';
-import { Bot, Eye, Globe, Award, Calendar } from 'lucide-react';
+import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ExternalLink } from 'lucide-react';
+import { projectsData } from '../../data';
 
 export default function ProjectsSection() {
-  const projects = [
-    {
-      title: "AI Agent Order Entry System",
-      description: "Developing an intelligent order entry system using AI agents to automate and optimize order processing with natural language processing for order interpretation and validation.",
-      icon: Bot,
-      status: "Current",
-      technologies: ["Python", "LLM APIs", "Azure", "NLP"],
-      highlights: [
-        "Automated order processing workflow",
-        "Natural language order interpretation",
-        "Business systems integration",
-        "Intelligent validation system"
-      ],
-      color: "from-blue-500 to-indigo-500"
-    },
-    {
-      title: "Computer Vision Business Application",
-      description: "Award-winning computer vision solution that earned Top 6 Business Ideas recognition at Breda University for innovative practical business applications.",
-      icon: Eye,
-      status: "Apr 2024",
-      award: "Top 6 Business Ideas",
-      technologies: ["Python", "OpenCV", "Machine Learning", "Computer Vision"],
-      highlights: [
-        "University award winner",
-        "Innovative CV technology application",
-        "Practical business solution",
-        "Proof-of-concept development"
-      ],
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      title: "Geisha Lounge Website Migration",
-      description: "Successfully migrated and maintained restaurant website from Wix to WordPress, implementing SEO best practices that resulted in improved search visibility.",
-      icon: Globe,
-      status: "2024",
-      technologies: ["WordPress", "SEO", "Web Development", "Migration"],
-      highlights: [
-        "Platform migration execution",
-        "SEO optimization implementation",
-        "Improved search visibility",
-        "Enhanced customization capabilities"
-      ],
-      color: "from-green-500 to-teal-500"
-    }
-  ];
+  const iconMap = {
+    'Bot': Bot,
+    'Eye': Eye,
+    'Globe': Globe,
+    'Search': Search,
+    'Sprout': Sprout,
+    'Shield': Shield,
+    'MessageSquare': MessageSquare,
+    'BarChart': BarChart
+  };
+
+  const projects = projectsData.projects.map(project => ({
+    ...project,
+    icon: iconMap[project.icon]
+  }));
 
   return (
     <section id="projects" className="py-20 bg-white">
@@ -61,10 +32,10 @@ export default function ProjectsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Featured Projects
+            {projectsData.title}
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Showcasing innovative solutions in AI, computer vision, and web development
+            {projectsData.description}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mt-6"></div>
         </motion.div>
@@ -119,16 +90,29 @@ export default function ProjectsSection() {
                           </ul>
                         </div>
 
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech, techIndex) => (
-                            <Badge 
-                              key={techIndex}
-                              variant="secondary" 
-                              className="px-3 py-1 bg-slate-100 text-slate-700 font-medium"
+                        <div>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.technologies.map((tech, techIndex) => (
+                              <Badge 
+                                key={techIndex}
+                                variant="secondary" 
+                                className="px-3 py-1 bg-slate-100 text-slate-700 font-medium"
+                              >
+                                {tech}
+                              </Badge>
+                            ))}
+                          </div>
+                          {project.link && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
                             >
-                              {tech}
-                            </Badge>
-                          ))}
+                              <span>View Project</span>
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

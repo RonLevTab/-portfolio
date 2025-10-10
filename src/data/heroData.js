@@ -3,15 +3,11 @@ export const heroData = {
     main: "Data Science &",
     highlight: "AI Student"
   },
-  description: "Passionate about machine learning, computer vision, and building intelligent systems that solve real-world problems.",
+  description: "Passionate about AI, machine learning, computer vision, data, agents, and building intelligent systems that solve real-world problems.",
   buttons: {
     primary: {
       text: "Get In Touch",
       targetId: "contact"
-    },
-    secondary: {
-      text: "View Projects",
-      url: "https://github.com/ronlev-tabuchov"
     }
   },
   stats: [

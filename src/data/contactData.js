@@ -26,11 +26,11 @@ export const contactData = {
       color: "from-purple-500 to-pink-500"
     },
     {
-      icon: "Github",
-      label: "GitHub",
-      value: "ronlev-tabuchov",
-      href: "https://github.com/ronlev-tabuchov",
-      color: "from-gray-600 to-gray-700"
+      icon: "Linkedin",
+      label: "LinkedIn",
+      value: "Ron Lev T.",
+      href: "https://www.linkedin.com/in/ron-lev-t-a3820528a/",
+      color: "from-blue-600 to-blue-700"
     }
   ],
   footer: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../../ui';
-import { Github, Mail, ArrowDown } from 'lucide-react';
+import { Mail, ArrowDown } from 'lucide-react';
 import { heroData } from '../../data';
 
 export default function HeroSection() {
@@ -57,16 +57,6 @@ export default function HeroSection() {
             >
               <Mail className="w-5 h-5 mr-2" />
               {heroData.buttons.primary.text}
-            </Button>
-            
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-slate-300 text-slate-700 hover:border-blue-600 hover:text-blue-600 px-8 py-3 text-lg transition-all duration-300"
-              onClick={() => window.open(heroData.buttons.secondary.url, '_blank')}
-            >
-              <Github className="w-5 h-5 mr-2" />
-              {heroData.buttons.secondary.text}
             </Button>
           </motion.div>
 
