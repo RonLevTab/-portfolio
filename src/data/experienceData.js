@@ -3,6 +3,22 @@ export const experienceData = {
   description: "Building leadership skills through diverse roles across retail, military, and academic environments",
   experiences: [
     {
+      title: "Degree Program Committee (DPC) Member",
+      company: "Breda University of Applied Sciences",
+      location: "Breda, Netherlands",
+      period: "2023 – Present",
+      icon: "GraduationCap",
+      color: "from-indigo-500 to-purple-500",
+      current: true,
+      description: "Contributing to curriculum decisions and NVAO accreditation success as DPC member since Year 1",
+      achievements: [
+        "Active participation in curriculum development",
+        "Contributing to NVAO accreditation process",
+        "Student representation in program decisions",
+        "Quality assurance and program improvement"
+      ]
+    },
+    {
       title: "Sales Assistant",
       company: "Mango",
       location: "Breda, Netherlands",

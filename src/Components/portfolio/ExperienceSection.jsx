@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, Badge } from '../../ui';
-import { MapPin, Calendar, Briefcase, Shield, Star, ShieldCheck } from 'lucide-react';
+import { MapPin, Calendar, Briefcase, Shield, Star, ShieldCheck, GraduationCap } from 'lucide-react';
 import { experienceData } from '../../data';
 
 export default function ExperienceSection() {
@@ -9,7 +9,8 @@ export default function ExperienceSection() {
     'Briefcase': Briefcase,
     'Star': Star,
     'Shield': Shield,
-    'ShieldCheck': ShieldCheck
+    'ShieldCheck': ShieldCheck,
+    'GraduationCap': GraduationCap
   };
 
   const experiences = experienceData.experiences.map(exp => ({
