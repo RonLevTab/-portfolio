@@ -66,16 +66,18 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative flex justify-center"
           >
             {/* Profile Image */}
-            <Card className="overflow-hidden shadow-2xl">
+            <Card className="overflow-hidden shadow-2xl max-w-md w-full">
               <CardContent className="p-0">
-                <div className="aspect-[4/5] relative overflow-hidden">
+                <div className="aspect-[3/4] relative overflow-hidden">
                   <img 
                     src={profileImage}
                     alt={aboutData.profileImage.alt}
-                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105 image-rendering-auto"
+                    style={{ imageRendering: 'high-quality' }}
+                    loading="lazy"
                   />
                   {/* Gradient overlay for better text contrast if needed */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
