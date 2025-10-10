@@ -36,7 +36,7 @@ export const projectsData = {
       description: "Award-winning computer vision solution using emotion detection and analysis that earned Top 6 Business Ideas recognition at Breda University for innovative practical business applications.",
       icon: "Eye",
       status: "Apr 2024",
-      award: "Top 6 Business Ideas",
+      award: "Top 6",
       technologies: ["Python", "OpenCV", "Machine Learning", "Computer Vision", "Emotion Detection"],
       highlights: [
         "University award winner",
