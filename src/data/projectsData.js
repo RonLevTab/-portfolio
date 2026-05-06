@@ -15,7 +15,7 @@ export const projectsData = {
         "Intelligent validation system"
       ],
       color: "from-blue-500 to-indigo-500",
-      link: "https://canva.link/dy8h47n8amj9f9m",
+      link: "https://www.canva.com/design/DAG-T61295M/Iu09SRgrISTz0gbiUPG_4A/watch",
       awards: ["Best Business Value", "Best Innovation"]
     },
     {
