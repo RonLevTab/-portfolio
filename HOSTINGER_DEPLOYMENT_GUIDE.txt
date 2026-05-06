@@ -1,0 +1,188 @@
+================================================================================
+HOSTINGER DEPLOYMENT GUIDE - React Portfolio Website
+================================================================================
+
+IMPORTANT: This is a React application that needs to be deployed as STATIC FILES
+
+================================================================================
+STEP 1: BUILD THE APPLICATION (Local Computer)
+================================================================================
+
+Run this command in the project folder:
+    npm run build
+
+This creates a "build" folder with all production files.
+
+================================================================================
+STEP 2: FILES TO UPLOAD
+================================================================================
+
+SOURCE (Local Computer):
+    portfolio/build/
+    ├── index.html
+    ├── asset-manifest.json
+    ├── logo.svg
+    ├── manifest.json
+    ├── robots.txt
+    └── static/
+        ├── css/
+        │   ├── main.[hash].css
+        │   └── main.[hash].css.map
+        ├── js/
+        │   ├── 453.[hash].chunk.js
+        │   ├── 453.[hash].chunk.js.map
+        │   ├── main.[hash].js
+        │   ├── main.[hash].js.LICENSE.txt
+        │   └── main.[hash].js.map
+        └── media/
+            └── aboutme.[hash].jpeg
+
+DESTINATION (Hostinger Server):
+    public_html/
+    ├── index.html              ← from build/index.html
+    ├── asset-manifest.json     ← from build/asset-manifest.json
+    ├── logo.svg                ← from build/logo.svg
+    ├── manifest.json           ← from build/manifest.json
+    ├── robots.txt              ← from build/robots.txt
+    ├── .htaccess               ← CREATE THIS FILE (see Step 3)
+    └── static/                 ← ENTIRE FOLDER from build/static/
+        ├── css/
+        ├── js/
+        └── media/
+
+================================================================================
+STEP 3: CREATE .htaccess FILE
+================================================================================
+
+Location: public_html/.htaccess
+
+Content:
+------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+------------------------------------------------------------------------
+
+Purpose: This ensures React Router works correctly and all routes load properly.
+
+================================================================================
+WHAT NOT TO UPLOAD
+================================================================================
+
+❌ DO NOT UPLOAD these folders/files:
+   - node_modules/          (46,000+ files - NOT NEEDED!)
+   - src/                   (source code - already compiled)
+   - public/                (template folder - not the build output)
+   - package.json
+   - package-lock.json
+   - tailwind.config.js
+   - postcss.config.js
+   - .git/
+   - .gitignore
+   - README.md
+
+✅ ONLY UPLOAD:
+   - Contents of the "build" folder (see Step 2)
+   - Create .htaccess file (see Step 3)
+
+================================================================================
+FINAL STRUCTURE ON HOSTINGER
+================================================================================
+
+public_html/
+├── .htaccess               ← File you create
+├── index.html              ← Main entry point
+├── asset-manifest.json     ← Build manifest
+├── logo.svg                ← Site icon and PWA icon
+├── manifest.json           ← PWA manifest
+├── robots.txt              ← SEO file
+└── static/                 ← All bundled code
+    ├── css/                ← Styles
+    ├── js/                 ← JavaScript bundles
+    └── media/              ← Images
+
+Total: Approximately 15-20 files
+Size: Approximately 1-3 MB
+
+================================================================================
+UPLOAD METHODS
+================================================================================
+
+METHOD 1: File Manager (Recommended)
+-------------------------------------
+1. Login to hPanel (https://hpanel.hostinger.com/)
+2. Go to Files > File Manager
+3. Navigate to public_html/
+4. Delete any default files (keep .htaccess if it exists)
+5. Upload ALL files from local build/ folder
+6. Upload the static/ folder with all its contents
+7. Create/edit .htaccess file with the content from Step 3
+
+METHOD 2: FTP/SFTP
+------------------
+1. Use FileZilla or similar FTP client
+2. Connect using credentials from hPanel > Files > FTP Accounts
+3. Navigate to public_html/ on remote server
+4. Upload all files from local build/ folder
+5. Create .htaccess file with the content from Step 3
+
+================================================================================
+VERIFICATION CHECKLIST
+================================================================================
+
+After uploading, verify:
+□ index.html is in public_html/ (not in a subfolder)
+□ static/ folder exists in public_html/
+□ static/css/ folder contains CSS files
+□ static/js/ folder contains JavaScript files
+□ static/media/ folder contains image files
+□ .htaccess file exists in public_html/
+□ Visit your domain - website should load
+□ No 404 errors in browser console (F12)
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: Blank page
+Solution: Check browser console (F12) for errors. Ensure all files uploaded.
+
+Problem: 404 on refresh or navigation
+Solution: Verify .htaccess file is created correctly.
+
+Problem: CSS/JS not loading
+Solution: Ensure static/ folder uploaded with all subfolders.
+
+Problem: Old version showing
+Solution: Clear browser cache (Ctrl+F5 or Cmd+Shift+R)
+
+================================================================================
+IMPORTANT NOTES FOR SUPPORT AGENT
+================================================================================
+
+1. This is a STATIC React application (Single Page Application)
+2. All files are pre-built and optimized - no compilation needed on server
+3. No PHP, database, or server-side processing required
+4. The .htaccess file is CRITICAL for React Router to work
+5. Files must be in public_html root, not in a subdirectory
+6. The "build" folder itself should NOT be uploaded - only its contents
+7. Total deployment size is small (~1-3 MB, 15-20 files)
+
+================================================================================
+CONTACT INFORMATION
+================================================================================
+
+If issues persist, verify:
+- Domain is pointing to correct hosting account
+- public_html is the correct document root
+- mod_rewrite is enabled on server
+- File permissions are correct (644 for files, 755 for directories)
+
+================================================================================
+

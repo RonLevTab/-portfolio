@@ -1,0 +1,174 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Colors
+\definecolor{primarycolor}{RGB}{99,102,241}
+\definecolor{textcolor}{RGB}{31,41,55}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primarycolor,
+    urlcolor=primarycolor,
+    pdftitle={Ron Lev Tabuchov - CV},
+}
+
+% Remove page numbers
+\pagenumbering{gobble}
+
+% Section formatting
+\titleformat{\section}{\Large\bfseries\color{primarycolor}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{4pt}{2pt}
+
+% Custom commands
+\newcommand{\workentry}[4]{
+    \subsection*{#1 \hfill \textit{#2}}
+    \vspace{-2pt}
+    \textit{#3}
+    \ifx&#4&\else\\\textit{#4}\fi
+}
+
+\newcommand{\projectentry}[3]{
+    \subsection*{#1 \hfill \textit{#2}}
+    \vspace{1pt}
+    \small{#3}
+}
+
+\begin{document}
+
+% Header
+\begin{center}
+    {\Huge\bfseries\color{primarycolor} Ron Lev Tabuchov}\\[6pt]
+    {\large Data Science \& Artificial Intelligence Student}\\[8pt]
+    \faEnvelope\ \href{mailto:Ronlevtab@gmail.com}{Ronlevtab@gmail.com} \quad
+    \faLinkedin\ \href{https://www.linkedin.com/in/ron-lev-t-a3820528a/}{Ron Lev T.} \quad
+    \faMapMarker*\ Breda, Netherlands \quad
+    \faGlobe\ \href{https://ronlevtab.com}{ronlevtab.com}
+\end{center}
+
+\vspace{-8pt}
+
+% Professional Summary
+\section*{Professional Summary}
+\small{Passionate Data Science \& AI student with 3+ years of experience in leadership roles. DPC member contributing to curriculum decisions and NVAO accreditation success. Top 6 Business Ideas Award winner. Specialized in machine learning, computer vision, and AI agents with practical experience building intelligent systems for real-world applications.}
+
+\vspace{-2pt}
+
+% Education
+\section*{Education}
+\subsection*{BSc Data Science \& Artificial Intelligence \hfill \textit{Sep 2023 -- Jul 2027 (Expected)}}
+\vspace{-2pt}
+\textit{Breda University of Applied Sciences, Netherlands}
+\vspace{-4pt}
+\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=2pt]
+    \small
+    \item Degree Program Committee (DPC) member since Year 1, contributing to curriculum and accreditation
+    \item Top 6 Business Ideas Award (April 2024) for Computer Vision emotion detection solution
+    \item Coursework: Machine Learning, Computer Vision, Reinforcement Learning, AI Agents, NLP, Database Systems
+\end{itemize}
+
+\vspace{2pt}
+\subsection*{Te'udat Bagrut Certificate \hfill \textit{Graduated 2014}}
+\vspace{-2pt}
+\textit{Misgav High School, Israel}
+
+\vspace{-2pt}
+
+% Technical Skills
+\section*{Technical Skills}
+\small
+\textbf{Programming \& Data:} Python, SQL, HTML/CSS, PowerBI, Data Lakes/Warehouses, Data Visualization\\
+\textbf{AI \& Machine Learning:} Machine Learning, Computer Vision, NLP, Deep Learning, Reinforcement Learning, LLM APIs\\
+\textbf{Development Tools:} Git/GitHub, Docker, VS Code, Cursor, Azure DevOps, AzureML\\
+\textbf{Web \& Project Mgmt:} WordPress, SEO, Microsoft Teams, Trello, Agile/Scrum, Technical Documentation
+
+\vspace{-2pt}
+
+% Selected Projects
+\section*{Selected Projects}
+\projectentry{AI Agent Order Entry System -- Move-Intermodal}{Current}
+{Developing intelligent order processing system using LLM APIs and NLP for automated order interpretation, validation, and business systems integration on Azure platform.}
+
+\vspace{2pt}
+\projectentry{Orbits -- Intelligent Job Search Platform}{2025}
+{Group project creating job-resume matching platform using LLM and ML. Built NLP-based feature extraction, vectorization, similarity search, and ethics-focused matching algorithm with Django REST API.}
+
+\vspace{2pt}
+\projectentry{NPEC -- Automated Plant Inoculation System}{2024}
+{Integrated computer vision and robotics system for automated plant inoculation. Implemented petri dish detection/segmentation, reinforcement learning, and end-to-end automation pipeline using OpenCV.}
+
+\vspace{2pt}
+\projectentry{Computer Vision Business Application}{Apr 2024 -- Top 6 Award}
+{Award-winning emotion detection solution using computer vision and machine learning. Recognized for innovative practical business applications at Breda University.}
+
+\vspace{-2pt}
+
+% Professional Experience
+\section*{Professional Experience}
+\subsection*{Degree Program Committee (DPC) Member \hfill \textit{2023 -- Present}}
+\vspace{-2pt}
+\textit{Breda University of Applied Sciences, Breda, Netherlands}
+\vspace{-4pt}
+\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=2pt]
+    \small
+    \item Active participation in curriculum development and NVAO accreditation process
+    \item Student representation in program decisions and quality assurance initiatives
+\end{itemize}
+
+\vspace{2pt}
+\subsection*{Sales Assistant \hfill \textit{Sep 2023 -- Present}}
+\vspace{-2pt}
+\textit{Mango, Breda, Netherlands}
+\vspace{-4pt}
+\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=2pt]
+    \small
+    \item Deliver excellent customer service while managing multiple priorities in fast-paced retail environment
+\end{itemize}
+
+\vspace{2pt}
+\subsection*{Head Cashier \hfill \textit{2020 -- 2023}}
+\vspace{-2pt}
+\textit{Zara, Breda, Netherlands}
+\vspace{-4pt}
+\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=2pt]
+    \small
+    \item Managed financial transactions, trained team members, and ensured operational efficiency
+    \item Demonstrated leadership in high-pressure environment
+\end{itemize}
+
+\vspace{2pt}
+\subsection*{Security Guard \hfill \textit{2019 -- 2020}}
+\vspace{-2pt}
+\textit{Ministry of Defence, Tel Aviv, Israel}
+\vspace{-4pt}
+\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=2pt]
+    \small
+    \item Provided high-level security for government facilities and officials, handled classified operations
+    \item Certification from College of Counter-Terrorism
+\end{itemize}
+
+\vspace{2pt}
+\subsection*{Search and Rescue Combat Officer \hfill \textit{2014 -- 2018}}
+\vspace{-2pt}
+\textit{Israel Defense Forces, Israel}
+\vspace{-4pt}
+\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=2pt]
+    \small
+    \item Led platoons after completing Officers Course, managing complex operations under pressure
+    \item Trained soldiers and officers in advanced combat and rescue skills
+\end{itemize}
+
+\end{document}
+

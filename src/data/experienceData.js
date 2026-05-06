@@ -1,7 +1,26 @@
 export const experienceData = {
   title: "Professional Experience",
-  description: "Building leadership skills through diverse roles across retail, military, and academic environments",
+  description: "Building leadership skills through diverse roles across AI, retail, military, and academic environments",
   experiences: [
+    {
+      title: "AI Intern",
+      company: "TriGlobal",
+      location: "Dordrecht, Netherlands",
+      period: "Feb 2025 – Present",
+      icon: "Bot",
+      color: "from-blue-600 to-cyan-500",
+      current: true,
+      description: "Designing and developing AI agents and automating processes across different parts of the company",
+      achievements: [
+        "Built multiple AI agents for process automation",
+        "Automatic Matching with address validation",
+        "Portal Remark Agent for data analysis",
+        "Quote Analysis and Comparison agents",
+        "Proof of Move Agent using computer vision",
+        "Volume Estimation with CV and depth estimation",
+        "Integration into Laravel/PHP infrastructure"
+      ]
+    },
     {
       title: "Degree Program Committee (DPC) Member",
       company: "Breda University of Applied Sciences",
@@ -55,13 +74,12 @@ export const experienceData = {
       period: "2019 – 2020",
       icon: "ShieldCheck",
       color: "from-orange-500 to-red-500",
-      description: "Provided high-level security for government facilities, government officials, and handling classified operations. Completed advanced security and first aid training at the College of Counter-Terrorism.",
+      description: "Provided high-level security for government facilities, government officials, and handling classified operations. Certification from the College of Counter-Terrorism.",
       achievements: [
-        "High-level security for government facilities",
+        "Security for government facilities",
         "Protection of government officials",
         "Classified operations handling",
-        "Advanced security training",
-        "First aid certification from College of Counter-Terrorism"
+        "Counter-Terrorism certification"
       ]
     },
     {
@@ -73,15 +91,11 @@ export const experienceData = {
       color: "from-green-500 to-teal-500",
       description: "Led platoons after completing Officers Course, managing complex operations under pressure",
       achievements: [
-        "Led operative squads, trained soldiers and officers",
+        "Led squads, trained soldiers and officers",
         "Complex operations management",
-        "Stress management in critical situations",
         "Decision-making under pressure",
         "Advanced combat and rescue skills"
       ]
     }
   ]
 };
-
-
-

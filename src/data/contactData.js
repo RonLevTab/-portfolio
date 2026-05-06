@@ -12,17 +12,17 @@ export const contactData = {
       color: "from-blue-500 to-indigo-500"
     },
     {
-      icon: "Phone",
-      label: "Phone",
-      value: "+31 6 48690335",
-      href: "tel:+31648690335",
-      color: "from-green-500 to-teal-500"
+      icon: "Instagram",
+      label: "Instagram",
+      value: "@ronlevtab",
+      href: "https://www.instagram.com/ronlevtab/",
+      color: "from-pink-500 to-rose-500"
     },
     {
       icon: "MapPin",
       label: "Location",
       value: "Breda, Netherlands",
-      href: "#",
+      href: "https://share.google/ngh5SwikJj4dyFcSk",
       color: "from-purple-500 to-pink-500"
     },
     {
@@ -38,6 +38,12 @@ export const contactData = {
     copyright: `© ${new Date().getFullYear()} All rights reserved`
   }
 };
+
+
+
+
+
+
 
 
 

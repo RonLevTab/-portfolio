@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
+  <!-- White Background fills entire viewBox -->
+  <rect x="0" y="0" width="200" height="200" fill="white"/>
+  
+  <!-- Blue Circle -->
+  <circle cx="100" cy="100" r="95" fill="#2563eb" opacity="0.95" stroke="none"/>
+  
+  <!-- Neural Network Dots (subtle background pattern) -->
+  <circle cx="60" cy="60" r="3" fill="#60a5fa" opacity="0.4"/>
+  <circle cx="140" cy="60" r="3" fill="#60a5fa" opacity="0.4"/>
+  <circle cx="60" cy="140" r="3" fill="#60a5fa" opacity="0.4"/>
+  <circle cx="140" cy="140" r="3" fill="#60a5fa" opacity="0.4"/>
+  
+  <!-- Connecting Lines (neural network style) -->
+  <line x1="60" y1="60" x2="100" y2="100" stroke="#60a5fa" stroke-width="1.5" opacity="0.3"/>
+  <line x1="140" y1="60" x2="100" y2="100" stroke="#60a5fa" stroke-width="1.5" opacity="0.3"/>
+  <line x1="60" y1="140" x2="100" y2="100" stroke="#60a5fa" stroke-width="1.5" opacity="0.3"/>
+  <line x1="140" y1="140" x2="100" y2="100" stroke="#60a5fa" stroke-width="1.5" opacity="0.3"/>
+  
+  <!-- Main Letters "RL" -->
+  <text x="100" y="125" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white" text-anchor="middle">RL</text>
+  
+  <!-- Accent Line (representing data/AI) -->
+  <rect x="75" y="135" width="50" height="4" fill="#60a5fa" rx="2"/>
+</svg>

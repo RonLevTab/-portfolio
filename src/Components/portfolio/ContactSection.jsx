@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '../../ui';
 import { 
   Mail, 
-  Phone, 
+  Instagram,
   MapPin, 
   Linkedin, 
   MessageSquare,
@@ -14,7 +14,7 @@ import { contactData } from '../../data';
 export default function ContactSection() {
   const iconMap = {
     'Mail': Mail,
-    'Phone': Phone,
+    'Instagram': Instagram,
     'MapPin': MapPin,
     'Linkedin': Linkedin
   };

@@ -6,7 +6,7 @@ export const skillsData = {
       title: "Programming Languages",
       icon: "Code",
       color: "from-blue-500 to-blue-600",
-      skills: ["Python", "SQL", "JavaScript", "HTML/CSS"]
+      skills: ["Python", "SQL", "HTML/CSS"]
     },
     {
       title: "Data & Analytics",
@@ -18,7 +18,7 @@ export const skillsData = {
       title: "AI & Machine Learning",
       icon: "Brain",
       color: "from-purple-500 to-purple-600",
-      skills: ["Machine Learning", "Computer Vision", "Reinforcement Learning", "Deep Learning", "LLM APIs"]
+      skills: ["Machine Learning", "Computer Vision", "NLP", "Deep Learning", "Reinforcement Learning", "LLM APIs"]
     },
     {
       title: "Development Tools",
@@ -40,6 +40,12 @@ export const skillsData = {
     }
   ]
 };
+
+
+
+
+
+
 
 
 

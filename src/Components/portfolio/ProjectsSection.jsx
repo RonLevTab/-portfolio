@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, Badge } from '../../ui';
-import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ExternalLink } from 'lucide-react';
+import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ExternalLink, Trophy } from 'lucide-react';
 import { projectsData } from '../../data';
 
 export default function ProjectsSection() {
@@ -70,6 +70,12 @@ export default function ProjectsSection() {
                             {project.award}
                           </div>
                         )}
+                        {project.awards && project.awards.map((awardItem, aIndex) => (
+                          <div key={aIndex} className="flex items-center gap-2 text-sm text-amber-600 font-medium mt-1">
+                            <Trophy className="w-4 h-4" />
+                            {awardItem}
+                          </div>
+                        ))}
                       </div>
 
                       <div className="flex-1 space-y-4">
@@ -102,17 +108,31 @@ export default function ProjectsSection() {
                               </Badge>
                             ))}
                           </div>
-                          {project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
-                            >
-                              <span>View Project</span>
-                              <ExternalLink className="w-4 h-4" />
-                            </a>
-                          )}
+                          <div className="flex flex-wrap gap-3">
+                            {project.link && (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                              >
+                                <span>View Project</span>
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
+                            )}
+                            {project.links && project.links.map((linkItem, lIndex) => (
+                              <a
+                                key={lIndex}
+                                href={linkItem.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                              >
+                                <span>{linkItem.label}</span>
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>

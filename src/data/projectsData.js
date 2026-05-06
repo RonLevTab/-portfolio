@@ -1,12 +1,12 @@
 export const projectsData = {
   title: "Featured Projects",
-  description: "Showcasing innovative solutions in AI, computer vision, and web development",
+  description: "Showcasing innovative solutions in AI",
   projects: [
     {
       title: "AI Agent Order Entry System - Move-Intermodal",
       description: "Developing an intelligent order entry system using AI agents to automate and optimize order processing with natural language processing for order interpretation and validation.",
       icon: "Bot",
-      status: "Current",
+      status: "Sep 2025 – Feb 2026",
       technologies: ["Python", "LLM APIs", "Azure", "NLP"],
       highlights: [
         "Automated order processing workflow",
@@ -14,22 +14,27 @@ export const projectsData = {
         "Business systems integration",
         "Intelligent validation system"
       ],
-      color: "from-blue-500 to-indigo-500"
+      color: "from-blue-500 to-indigo-500",
+      link: "https://canva.link/dy8h47n8amj9f9m",
+      awards: ["Best Business Value", "Best Innovation"]
     },
     {
-      title: "Geisha Lounge Website Migration",
-      description: "Successfully migrated and maintained restaurant website from Wix to WordPress, implementing SEO best practices that resulted in improved search visibility.",
+      title: "AI-Powered Website Building",
+      description: "Building modern, responsive websites using AI-assisted development workflows. Delivered professional sites for real clients including a pet care business and an iris photography studio.",
       icon: "Globe",
-      status: "Current",
-      technologies: ["WordPress", "SEO", "Web Development", "Migration"],
+      status: "Apr 2026",
+      technologies: ["React", "AI Development", "Tailwind CSS", "Web Design"],
       highlights: [
-        "Platform migration execution",
-        "SEO optimization implementation",
-        "Improved search visibility",
-        "Enhanced customization capabilities"
+        "Built and deployed irisonthemove.nl",
+        "Built and deployed petaron.ai",
+        "AI-assisted design and development",
+        "Client-facing delivery and iteration"
       ],
       color: "from-green-500 to-teal-500",
-      link: "https://www.geishalounge.nl/"
+      links: [
+        { label: "irisonthemove.nl", url: "https://irisonthemove.nl" },
+        { label: "petaron.ai", url: "https://petaron.ai" }
+      ]
     },
     {
       title: "Computer Vision Business Application",
@@ -40,8 +45,8 @@ export const projectsData = {
       technologies: ["Python", "OpenCV", "Machine Learning", "Computer Vision", "Emotion Detection"],
       highlights: [
         "University award winner",
-        "Emotion detection and analysis using CV",
-        "Innovative CV technology application",
+        "Emotion detection and analysis",
+        "Innovative CV application",
         "Practical business solution"
       ],
       color: "from-purple-500 to-pink-500",
@@ -55,7 +60,7 @@ export const projectsData = {
       technologies: ["Python", "LLM", "Machine Learning", "NLP", "Django REST API"],
       highlights: [
         "Data ingestion for jobs and resumes",
-        "NLP-based feature extraction and embeddings",
+        "NLP-based feature extraction",
         "Vectorization and similarity search",
         "Ethics-focused matching algorithm"
       ],
@@ -70,7 +75,7 @@ export const projectsData = {
       technologies: ["Computer Vision", "Robotics", "Reinforcement Learning", "Python", "OpenCV"],
       highlights: [
         "Petri dish detection and segmentation",
-        "CV-based data preparation and operations",
+        "CV-based data preparation",
         "Reinforcement learning integration",
         "End-to-end automation pipeline"
       ],
@@ -84,7 +89,7 @@ export const projectsData = {
       status: "2024",
       technologies: ["AI", "Machine Learning", "Data Analysis", "Python"],
       highlights: [
-        "Classifying danger areas using real driver data",
+        "Classifying danger areas with real data",
         "AI-powered risk zone detection",
         "Driver notification system",
         "Data-driven safety improvements"
@@ -101,8 +106,8 @@ export const projectsData = {
       highlights: [
         "Mixed-methods research approach",
         "Survey and interview data collection",
-        "Statistical analysis of satisfaction factors",
-        "Actionable insights for SME chatbot implementation"
+        "Statistical analysis of satisfaction",
+        "Actionable insights for SMEs"
       ],
       color: "from-violet-500 to-purple-500",
       link: "https://www.canva.com/design/DAGU2V2CBi0/Fzs_y22nyxQSQWxFpUPQvA/view?utm_content=DAGU2V2CBi0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd4b3dc228b"
@@ -119,10 +124,8 @@ export const projectsData = {
         "Advanced data processing pipeline",
         "Excel-based analytics integration"
       ],
-      color: "from-pink-500 to-rose-500"
+      color: "from-pink-500 to-rose-500",
+      link: "https://app.powerbi.com/view?r=eyJrIjoiNjM3MmIyYTAtMWZhNC00ODVmLWFiNmQtODkyYjczODZlM2E4IiwidCI6IjBhMzM1ODliLTAwMzYtNGZlOC1hODI5LTNlZDA5MjZhZjg4NiIsImMiOjl9"
     }
   ]
 };
-
-
-

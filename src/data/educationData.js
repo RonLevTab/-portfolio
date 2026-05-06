@@ -13,13 +13,17 @@ export const educationData = {
       achievements: [
         "Degree Program Committee (DPC) member since Year 1",
         "Contributing to curriculum decisions and NVAO accreditation success",
-        "Top 6 Business Ideas Award (April 2024)"
+        "Top 6 Business Ideas Award (April 2024)",
+        "Agentic Order Entry System - Best Business Value & Best Innovation Awards",
+        "AI Intern placement at TriGlobal, Dordrecht"
       ],
       coursework: [
         "Machine Learning",
-        "Computer Vision", 
+        "Computer Vision",
         "Reinforcement Learning",
         "AI Agents",
+        "NLP",
+        "Data Engineering",
         "Database Systems",
         "SEO"
       ]
@@ -40,6 +44,3 @@ export const educationData = {
     }
   ]
 };
-
-
-

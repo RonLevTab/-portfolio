@@ -156,3 +156,148 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Deploying to Hostinger
+
+This guide will help you deploy your React portfolio to Hostinger hosting.
+
+### Prerequisites
+
+- Hostinger hosting account with domain
+- FTP/SFTP access credentials (available in hPanel)
+- Latest production build of your app
+
+### Step 1: Build Your Application
+
+Before deploying, create an optimized production build:
+
+```bash
+npm run build
+```
+
+This creates a `build` folder with all static files ready for deployment.
+
+### Step 2: Access Hostinger hPanel
+
+1. Log in to [Hostinger hPanel](https://hpanel.hostinger.com/)
+2. Navigate to your hosting account
+3. Go to "Files" > "File Manager" or use FTP/SFTP
+
+### Step 3: Deploy Using File Manager (Recommended for Beginners)
+
+1. **Open File Manager:**
+   - In hPanel, click "Files" > "File Manager"
+   - Navigate to `public_html` folder (this is your website root)
+
+2. **Clear existing files (if any):**
+   - Delete any default files in `public_html` (like index.html, default pages)
+   - Keep `.htaccess` if it exists
+
+3. **Upload your build files:**
+   - Open your local `build` folder
+   - Select ALL files and folders inside the `build` folder
+   - Upload them directly to `public_html` (NOT inside a build subfolder)
+   - Files should include: `index.html`, `asset-manifest.json`, `favicon.ico`, `static` folder, etc.
+
+4. **Create/Update .htaccess file:**
+   - In `public_html`, create or edit `.htaccess` file
+   - Add the following content to handle React Router:
+
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+```
+
+### Step 4: Deploy Using FTP/SFTP (Alternative Method)
+
+1. **Get FTP credentials:**
+   - In hPanel, go to "Files" > "FTP Accounts"
+   - Note your FTP hostname, username, and password
+   - Or create a new FTP account if needed
+
+2. **Connect using FTP client (FileZilla recommended):**
+   - Download [FileZilla](https://filezilla-project.org/)
+   - Open FileZilla
+   - Enter your FTP credentials:
+     - Host: your-hostname (e.g., ftp.yourdomain.com)
+     - Username: your FTP username
+     - Password: your FTP password
+     - Port: 21 (FTP) or 22 (SFTP)
+   - Click "Quickconnect"
+
+3. **Upload files:**
+   - Navigate to `public_html` on the remote site (right panel)
+   - Navigate to your local `build` folder (left panel)
+   - Select all contents inside the `build` folder
+   - Drag and drop to `public_html`
+   - Wait for upload to complete
+
+4. **Create .htaccess file:**
+   - Right-click in remote directory > "Create file"
+   - Name it `.htaccess`
+   - Add the Apache rewrite rules (see above)
+
+### Step 5: Verify Deployment
+
+1. Visit your domain in a web browser
+2. Check that all pages load correctly
+3. Test navigation and all links
+4. Check browser console for any errors
+
+### Step 6: Update Deployment Script (Optional)
+
+For easier future deployments, you can add a deployment reminder to your workflow:
+
+After making changes:
+```bash
+# 1. Build the latest version
+npm run build
+
+# 2. Upload contents of the build folder to Hostinger
+#    (Use File Manager or FTP to upload build/* to public_html/)
+```
+
+### Troubleshooting
+
+**Issue: Blank page after deployment**
+- Check browser console for errors
+- Verify all files from `build` folder were uploaded
+- Check that files are in `public_html`, not `public_html/build`
+
+**Issue: Routes don't work (404 errors)**
+- Ensure `.htaccess` file is created with correct rewrite rules
+- Check that mod_rewrite is enabled (contact Hostinger support if needed)
+
+**Issue: CSS/JS files not loading**
+- Check browser console for 404 errors
+- Verify the `static` folder was uploaded correctly
+- Clear browser cache
+
+**Issue: Old version showing**
+- Clear browser cache (Ctrl+F5 or Cmd+Shift+R)
+- Clear Hostinger cache if available in hPanel
+
+### Important Notes
+
+- Always build before deploying: `npm run build`
+- Upload only the contents of the `build` folder, not the folder itself
+- Keep your `node_modules` folder on your local machine only (never upload it)
+- The `build` folder contents should go directly into `public_html`
+- After each code change, rebuild and re-upload
+
+### Updating Your Site
+
+Whenever you make changes to your portfolio:
+
+1. Make your code changes locally
+2. Test locally: `npm start`
+3. Build production version: `npm run build`
+4. Upload new build files to `public_html` (overwrite existing)
+5. Clear cache and verify changes

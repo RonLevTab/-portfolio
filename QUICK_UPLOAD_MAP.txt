@@ -1,0 +1,50 @@
+═══════════════════════════════════════════════════════════════════
+                    QUICK UPLOAD MAP FOR HOSTINGER
+═══════════════════════════════════════════════════════════════════
+
+FROM MY COMPUTER                    TO HOSTINGER SERVER
+(portfolio/build/)                  (public_html/)
+
+
+build/index.html            ─────>  public_html/index.html
+build/asset-manifest.json   ─────>  public_html/asset-manifest.json
+build/favicon.ico           ─────>  public_html/favicon.ico
+build/logo192.png           ─────>  public_html/logo192.png
+build/logo512.png           ─────>  public_html/logo512.png
+build/manifest.json         ─────>  public_html/manifest.json
+build/robots.txt            ─────>  public_html/robots.txt
+
+build/static/               ─────>  public_html/static/
+  ├── css/                  ─────>    ├── css/
+  ├── js/                   ─────>    ├── js/
+  └── media/                ─────>    └── media/
+
+
+ALSO CREATE THIS FILE:
+                              
+(Create manually)           ─────>  public_html/.htaccess
+                                    (See content below)
+
+═══════════════════════════════════════════════════════════════════
+
+.htaccess FILE CONTENT:
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+
+═══════════════════════════════════════════════════════════════════
+
+TOTAL FILES TO UPLOAD: ~15-20 files
+SIZE: ~1-3 MB
+
+DO NOT UPLOAD: node_modules, src, public folders!
+
+═══════════════════════════════════════════════════════════════════
+
