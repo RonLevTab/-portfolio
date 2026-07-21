@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Instagram, MapPin, Linkedin, ArrowUpRight } from 'lucide-react';
 import { contactData } from '../../data';
+import SparklesFinale from './SparklesFinale';
 
 export default function ContactSection() {
   const iconMap = { Mail, Instagram, MapPin, Linkedin };
@@ -12,7 +13,7 @@ export default function ContactSection() {
   }));
 
   return (
-    <section id="contact" className="py-24 md:py-28 bg-th-surface-alt border-t border-th-line">
+    <section id="contact" className="py-16 md:py-20 bg-th-surface-alt border-t border-th-line">
       <div className="max-w-5xl mx-auto section-padding">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -21,7 +22,6 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-center max-w-2xl mx-auto"
         >
-          <span className="kicker mb-6">{contactData.subtitle}</span>
           <h2 className="font-serif text-4xl md:text-5xl text-th-heading leading-[1.05]">
             {contactData.title}
           </h2>
@@ -59,16 +59,19 @@ export default function ContactSection() {
             );
           })}
         </div>
+      </div>
 
+      <SparklesFinale text={contactData.footer.name} className="mt-16" />
+
+      <div className="max-w-5xl mx-auto section-padding">
         <motion.footer
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-20 pt-8 border-t border-th-line text-center"
+          className="pt-8 border-t border-th-line text-center"
         >
-          <p className="font-serif text-lg text-th-heading">{contactData.footer.name}</p>
-          <p className="mt-1 text-sm text-th-faint">{contactData.footer.copyright}</p>
+          <p className="text-sm text-th-faint">{contactData.footer.copyright}</p>
         </motion.footer>
       </div>
     </section>

@@ -18,7 +18,7 @@ export const aboutData = {
     },
     {
       icon: "Award",
-      label: "Top 6 Award Winner",
+      label: "Award-Winning Projects",
       color: "text-purple-600"
     },
     {

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Editorial section heading — kicker label, serif title, muted description.
-export default function SectionHeading({ kicker, title, description, align = 'center' }) {
+export default function SectionHeading({ title, description, align = 'center' }) {
   const alignment = align === 'left' ? 'text-left items-start' : 'text-center items-center';
   return (
     <motion.div
@@ -12,7 +12,6 @@ export default function SectionHeading({ kicker, title, description, align = 'ce
       viewport={{ once: true }}
       className={`mb-14 flex flex-col ${alignment}`}
     >
-      {kicker && <span className="kicker mb-5">{kicker}</span>}
       <h2 className="text-4xl md:text-5xl font-normal text-th-heading leading-[1.05]">
         {title}
       </h2>

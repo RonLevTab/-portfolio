@@ -13,10 +13,9 @@ export default function ExperienceSection() {
   }));
 
   return (
-    <section id="experience" className="py-24 md:py-28 bg-th-surface-alt border-y border-th-line">
+    <section id="experience" className="py-16 md:py-20 bg-th-surface-alt border-y border-th-line">
       <div className="max-w-5xl mx-auto section-padding">
         <SectionHeading
-          kicker="Experience"
           title={experienceData.title}
           description={experienceData.description}
         />

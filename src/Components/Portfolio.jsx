@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { navigationData } from '../data';
 
+import InteractiveHoverButton from './portfolio/InteractiveHoverButton';
 import HeroSection from './portfolio/HeroSection';
 import AboutSection from './portfolio/AboutSection';
 import SkillsSection from './portfolio/SkillsSection';
@@ -100,12 +101,12 @@ export default function Portfolio() {
               ))}
             </div>
 
-            <button
+            <InteractiveHoverButton
               onClick={() => scrollToSection('contact')}
-              className="btn-primary hidden md:inline-flex !px-5 !py-2.5 !text-[12px]"
+              className="hidden md:inline-flex !px-5 !py-2.5 !text-[12px]"
             >
               Get in touch
-            </button>
+            </InteractiveHoverButton>
           </div>
         </div>
       </motion.nav>

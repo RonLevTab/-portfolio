@@ -9,9 +9,9 @@ export default function AboutSection() {
   const iconMap = { MapPin, Users, Award, Target };
 
   return (
-    <section id="about" className="py-24 md:py-28 bg-th-page">
+    <section id="about" className="py-16 md:py-20 bg-th-page">
       <div className="max-w-6xl mx-auto section-padding">
-        <SectionHeading kicker="About" title={aboutData.title} align="left" />
+        <SectionHeading title={aboutData.title} align="left" />
 
         <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-14 lg:gap-20 items-center">
           <motion.div

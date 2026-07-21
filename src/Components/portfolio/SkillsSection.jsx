@@ -8,9 +8,9 @@ export default function SkillsSection() {
   const iconMap = { Code, Brain, BarChart3, Globe, Settings, Zap };
 
   return (
-    <section id="skills" className="py-24 md:py-28 bg-th-surface-alt border-y border-th-line">
+    <section id="skills" className="py-16 md:py-20 bg-th-surface-alt border-y border-th-line">
       <div className="max-w-6xl mx-auto section-padding">
-        <SectionHeading kicker="Skills" title={skillsData.title} description={skillsData.description} />
+        <SectionHeading title={skillsData.title} description={skillsData.description} />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillsData.categories.map((category, index) => {

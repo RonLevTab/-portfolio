@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { heroData } from '../../data';
+import FloatingDots from './FloatingDots';
+import InteractiveHoverButton from './InteractiveHoverButton';
 
 export default function HeroSection() {
   const scrollTo = (id) =>
@@ -14,6 +16,7 @@ export default function HeroSection() {
     >
       {/* Background texture */}
       <div className="pointer-events-none absolute inset-0 animated-grid opacity-70" />
+      <FloatingDots count={45} />
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
         style={{
@@ -23,16 +26,6 @@ export default function HeroSection() {
       />
 
       <div className="relative max-w-4xl mx-auto section-padding text-center">
-        <motion.span
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="kicker mb-8"
-        >
-          <Sparkles className="h-3.5 w-3.5" />
-          Data Science &amp; AI · Portfolio
-        </motion.span>
-
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,10 +53,10 @@ export default function HeroSection() {
           transition={{ delay: 0.5, duration: 0.7 }}
           className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center"
         >
-          <button onClick={() => scrollTo(heroData.buttons.primary.targetId)} className="btn-primary">
+          <InteractiveHoverButton onClick={() => scrollTo(heroData.buttons.primary.targetId)}>
             {heroData.buttons.primary.text}
             <ArrowUpRight className="h-4 w-4" />
-          </button>
+          </InteractiveHoverButton>
           <button onClick={() => scrollTo('projects')} className="btn-ghost">
             View projects
           </button>

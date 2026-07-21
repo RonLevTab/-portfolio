@@ -6,10 +6,9 @@ import SectionHeading from './SectionHeading';
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-24 md:py-28 bg-th-page">
+    <section id="education" className="py-16 md:py-20 bg-th-page">
       <div className="max-w-5xl mx-auto section-padding">
         <SectionHeading
-          kicker="Education"
           title={educationData.title}
           description={educationData.description}
         />

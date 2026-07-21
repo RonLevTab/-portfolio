@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ArrowUpRight, Trophy } from 'lucide-react';
 import { projectsData } from '../../data';
 import SectionHeading from './SectionHeading';
+import { GlowingEffect } from './GlowingEffect';
+import InteractiveHoverButton from './InteractiveHoverButton';
 
 export default function ProjectsSection() {
   const iconMap = { Bot, Eye, Globe, Search, Sprout, Shield, MessageSquare, BarChart };
@@ -13,9 +15,9 @@ export default function ProjectsSection() {
   }));
 
   return (
-    <section id="projects" className="py-24 md:py-28 bg-th-page">
+    <section id="projects" className="py-16 md:py-20 bg-th-page">
       <div className="max-w-6xl mx-auto section-padding">
-        <SectionHeading kicker="Work" title={projectsData.title} description={projectsData.description} />
+        <SectionHeading title={projectsData.title} description={projectsData.description} />
 
         <div className="space-y-6">
           {projects.map((project, index) => {
@@ -27,9 +29,18 @@ export default function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: (index % 3) * 0.1 }}
                 viewport={{ once: true }}
-                className="editorial-card p-7 md:p-9"
+                className="relative rounded-xl border-[0.75px] border-th-line p-1.5 md:rounded-2xl md:p-2"
               >
-                <div className="flex flex-col lg:flex-row gap-8">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={2}
+                />
+                <div className="relative flex h-full flex-col overflow-hidden rounded-lg border-[0.75px] border-th-line-subtle bg-th-surface p-7 md:p-9 shadow-[0px_0px_27px_0px_rgba(45,45,45,0.15)]">
+                  <div className="flex flex-col lg:flex-row gap-8">
                   <div className="lg:w-52 flex-shrink-0 space-y-3">
                     <span className="icon-tile h-14 w-14">
                       <IconComponent className="h-6 w-6" />
@@ -81,31 +92,34 @@ export default function ProjectsSection() {
 
                     <div className="flex flex-wrap gap-3 pt-1">
                       {project.link && (
-                        <a
+                        <InteractiveHoverButton
                           href={project.link}
+                          variant="light"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-ghost !px-5 !py-2.5 !text-[12px]"
+                          className="!px-5 !py-2.5 !text-[12px]"
                         >
                           View project
                           <ArrowUpRight className="h-4 w-4" />
-                        </a>
+                        </InteractiveHoverButton>
                       )}
                       {project.links &&
                         project.links.map((linkItem, lIndex) => (
-                          <a
+                          <InteractiveHoverButton
                             key={lIndex}
                             href={linkItem.url}
+                            variant="light"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-ghost !px-5 !py-2.5 !text-[12px]"
+                            className="!px-5 !py-2.5 !text-[12px]"
                           >
                             {linkItem.label}
                             <ArrowUpRight className="h-4 w-4" />
-                          </a>
+                          </InteractiveHoverButton>
                         ))}
                     </div>
                   </div>
+                </div>
                 </div>
               </motion.article>
             );
