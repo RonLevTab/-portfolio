@@ -3,6 +3,21 @@ export const projectsData = {
   description: "Showcasing innovative solutions in AI",
   projects: [
     {
+      title: "Petaron.ai — AI Order Processing for Freight Forwarders",
+      description: "Co-founder and developer of Petaron.ai, an AI agent that automates freight order entry end to end — reading incoming emails and PDFs, structuring and validating order data, and preparing TMS-ready drafts for human approval.",
+      icon: "Truck",
+      status: "2025 – Present",
+      technologies: ["AI Agents", "LLM APIs", "Python", "NLP", "React"],
+      highlights: [
+        "AI agent: email & PDF intake to TMS-ready drafts",
+        "Automated order data structuring and validation",
+        "Human-in-the-loop approval workflow",
+        "Designed, built, and deployed petaron.ai"
+      ],
+      color: "from-amber-500 to-orange-500",
+      link: "https://petaron.ai"
+    },
+    {
       title: "AI Agent Order Entry System - Move-Intermodal",
       description: "Developing an intelligent order entry system using AI agents to automate and optimize order processing with natural language processing for order interpretation and validation.",
       icon: "Bot",
@@ -20,7 +35,7 @@ export const projectsData = {
     },
     {
       title: "AI-Powered Website Building",
-      description: "Building modern, responsive websites using AI-assisted development workflows. Delivered professional sites for real clients including a pet care business and an iris photography studio.",
+      description: "Designing, building, and deploying modern, responsive websites with AI-assisted development workflows — including irisonthemove.nl for a travel influencer and the Petaron.ai product site.",
       icon: "Globe",
       status: "Apr 2026",
       technologies: ["React", "AI Development", "Tailwind CSS", "Web Design"],
@@ -28,7 +43,7 @@ export const projectsData = {
         "Built and deployed irisonthemove.nl",
         "Built and deployed petaron.ai",
         "AI-assisted design and development",
-        "Client-facing delivery and iteration"
+        "Responsive, SEO-friendly builds"
       ],
       color: "from-green-500 to-teal-500",
       links: [

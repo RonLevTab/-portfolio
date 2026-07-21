@@ -3,13 +3,30 @@ export const experienceData = {
   description: "Building leadership skills through diverse roles across AI, retail, military, and academic environments",
   experiences: [
     {
+      title: "Co-Founder",
+      company: "Petaron.ai",
+      location: "Netherlands",
+      period: "2025 – Present",
+      icon: "Rocket",
+      color: "from-amber-500 to-orange-500",
+      current: true,
+      description: "Co-founding Petaron.ai, an AI agent that automates freight order entry — leading across marketing, web design, client relationships, and technical development. Hands-on in every aspect of building the startup.",
+      achievements: [
+        "Marketing, branding, and go-to-market",
+        "Web design and front-end development",
+        "Client relationships and onboarding",
+        "Technical build of the AI product",
+        "Involved end-to-end in every part of the business"
+      ]
+    },
+    {
       title: "AI Intern",
       company: "TriGlobal",
       location: "Dordrecht, Netherlands",
-      period: "Feb 2025 – Present",
+      period: "Feb 2026 – Jul 2026",
       icon: "Bot",
       color: "from-blue-600 to-cyan-500",
-      current: true,
+      current: false,
       description: "Designing and developing AI agents and automating processes across different parts of the company",
       achievements: [
         "Built multiple AI agents for process automation",

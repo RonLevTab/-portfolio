@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Briefcase, Shield, Star, ShieldCheck, GraduationCap, Bot } from 'lucide-react';
+import { MapPin, Calendar, Briefcase, Shield, Star, ShieldCheck, GraduationCap, Bot, Rocket } from 'lucide-react';
 import { experienceData } from '../../data';
 import SectionHeading from './SectionHeading';
 
 export default function ExperienceSection() {
-  const iconMap = { Briefcase, Star, Shield, ShieldCheck, GraduationCap, Bot };
+  const iconMap = { Briefcase, Star, Shield, ShieldCheck, GraduationCap, Bot, Rocket };
 
   const experiences = experienceData.experiences.map((exp) => ({
     ...exp,

@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ArrowUpRight, Trophy } from 'lucide-react';
+import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ArrowUpRight, Trophy, Truck } from 'lucide-react';
 import { projectsData } from '../../data';
 import SectionHeading from './SectionHeading';
 import { GlowingEffect } from './GlowingEffect';
 import InteractiveHoverButton from './InteractiveHoverButton';
 
 export default function ProjectsSection() {
-  const iconMap = { Bot, Eye, Globe, Search, Sprout, Shield, MessageSquare, BarChart };
+  const iconMap = { Bot, Eye, Globe, Search, Sprout, Shield, MessageSquare, BarChart, Truck };
 
   const projects = projectsData.projects.map((project) => ({
     ...project,
