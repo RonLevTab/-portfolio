@@ -17,8 +17,8 @@ export const heroData = {
       color: "text-blue-600"
     },
     {
-      value: "Top 6",
-      label: "University Award",
+      value: "Award-Winning",
+      label: "Projects",
       color: "text-indigo-600"
     },
     {

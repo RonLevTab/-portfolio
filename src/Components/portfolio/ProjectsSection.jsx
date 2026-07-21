@@ -1,144 +1,113 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, Badge } from '../../ui';
-import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ExternalLink, Trophy } from 'lucide-react';
+import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ArrowUpRight, Trophy } from 'lucide-react';
 import { projectsData } from '../../data';
+import SectionHeading from './SectionHeading';
 
 export default function ProjectsSection() {
-  const iconMap = {
-    'Bot': Bot,
-    'Eye': Eye,
-    'Globe': Globe,
-    'Search': Search,
-    'Sprout': Sprout,
-    'Shield': Shield,
-    'MessageSquare': MessageSquare,
-    'BarChart': BarChart
-  };
+  const iconMap = { Bot, Eye, Globe, Search, Sprout, Shield, MessageSquare, BarChart };
 
-  const projects = projectsData.projects.map(project => ({
+  const projects = projectsData.projects.map((project) => ({
     ...project,
-    icon: iconMap[project.icon]
+    icon: iconMap[project.icon],
   }));
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            {projectsData.title}
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            {projectsData.description}
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mt-6"></div>
-        </motion.div>
+    <section id="projects" className="py-24 md:py-28 bg-th-page">
+      <div className="max-w-6xl mx-auto section-padding">
+        <SectionHeading kicker="Work" title={projectsData.title} description={projectsData.description} />
 
-        <div className="grid lg:grid-cols-1 gap-8">
+        <div className="space-y-6">
           {projects.map((project, index) => {
             const IconComponent = project.icon;
             return (
-              <motion.div
+              <motion.article
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.55, delay: (index % 3) * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                className="editorial-card p-7 md:p-9"
               >
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white">
-                  <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
-                  <CardContent className="p-8">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                      <div className="flex-shrink-0">
-                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shadow-lg mb-4`}>
-                          <IconComponent className="w-8 h-8 text-white" />
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
-                          <Calendar className="w-4 h-4" />
-                          {project.status}
-                        </div>
-                        {project.award && (
-                          <div className="flex items-center gap-2 text-sm text-amber-600 font-medium">
-                            <Award className="w-4 h-4" />
-                            {project.award}
-                          </div>
-                        )}
-                        {project.awards && project.awards.map((awardItem, aIndex) => (
-                          <div key={aIndex} className="flex items-center gap-2 text-sm text-amber-600 font-medium mt-1">
-                            <Trophy className="w-4 h-4" />
-                            {awardItem}
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex-1 space-y-4">
-                        <div>
-                          <h3 className="text-2xl font-bold text-slate-900 mb-2">{project.title}</h3>
-                          <p className="text-lg text-slate-600 leading-relaxed">{project.description}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-slate-900 mb-2">Key Features:</h4>
-                          <ul className="grid md:grid-cols-2 gap-2">
-                            {project.highlights.map((highlight, hIndex) => (
-                              <li key={hIndex} className="flex items-center gap-2 text-slate-600">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                                {highlight}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.technologies.map((tech, techIndex) => (
-                              <Badge 
-                                key={techIndex}
-                                variant="secondary" 
-                                className="px-3 py-1 bg-slate-100 text-slate-700 font-medium"
-                              >
-                                {tech}
-                              </Badge>
-                            ))}
-                          </div>
-                          <div className="flex flex-wrap gap-3">
-                            {project.link && (
-                              <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
-                              >
-                                <span>View Project</span>
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            )}
-                            {project.links && project.links.map((linkItem, lIndex) => (
-                              <a
-                                key={lIndex}
-                                href={linkItem.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
-                              >
-                                <span>{linkItem.label}</span>
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="lg:w-52 flex-shrink-0 space-y-3">
+                    <span className="icon-tile h-14 w-14">
+                      <IconComponent className="h-6 w-6" />
+                    </span>
+                    <div className="flex items-center gap-2 text-sm text-th-muted">
+                      <Calendar className="h-4 w-4" />
+                      {project.status}
                     </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                    {project.award && (
+                      <div className="inline-flex items-center gap-1.5 rounded-full border border-th-line bg-th-surface-alt px-3 py-1 text-xs font-medium text-th-heading">
+                        <Award className="h-3.5 w-3.5" />
+                        {project.award}
+                      </div>
+                    )}
+                    {project.awards &&
+                      project.awards.map((awardItem, aIndex) => (
+                        <div
+                          key={aIndex}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-th-line bg-th-surface-alt px-3 py-1 text-xs font-medium text-th-heading mr-1.5"
+                        >
+                          <Trophy className="h-3.5 w-3.5" />
+                          {awardItem}
+                        </div>
+                      ))}
+                  </div>
+
+                  <div className="flex-1 space-y-5">
+                    <div>
+                      <h3 className="font-serif text-2xl text-th-heading mb-2">{project.title}</h3>
+                      <p className="text-lg leading-relaxed text-th-body">{project.description}</p>
+                    </div>
+
+                    <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+                      {project.highlights.map((highlight, hIndex) => (
+                        <li key={hIndex} className="flex items-start gap-2.5 text-th-body">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-th-heading/50" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className="tech-tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-3 pt-1">
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-ghost !px-5 !py-2.5 !text-[12px]"
+                        >
+                          View project
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      )}
+                      {project.links &&
+                        project.links.map((linkItem, lIndex) => (
+                          <a
+                            key={lIndex}
+                            href={linkItem.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost !px-5 !py-2.5 !text-[12px]"
+                          >
+                            {linkItem.label}
+                            <ArrowUpRight className="h-4 w-4" />
+                          </a>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
             );
           })}
         </div>

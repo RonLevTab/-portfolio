@@ -1,111 +1,90 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, Badge } from '../../ui';
 import { MapPin, Calendar, Briefcase, Shield, Star, ShieldCheck, GraduationCap, Bot } from 'lucide-react';
 import { experienceData } from '../../data';
+import SectionHeading from './SectionHeading';
 
 export default function ExperienceSection() {
-  const iconMap = {
-    'Briefcase': Briefcase,
-    'Star': Star,
-    'Shield': Shield,
-    'ShieldCheck': ShieldCheck,
-    'GraduationCap': GraduationCap,
-    'Bot': Bot
-  };
+  const iconMap = { Briefcase, Star, Shield, ShieldCheck, GraduationCap, Bot };
 
-  const experiences = experienceData.experiences.map(exp => ({
+  const experiences = experienceData.experiences.map((exp) => ({
     ...exp,
-    icon: iconMap[exp.icon]
+    icon: iconMap[exp.icon],
   }));
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            {experienceData.title}
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            {experienceData.description}
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mt-6"></div>
-        </motion.div>
+    <section id="experience" className="py-24 md:py-28 bg-th-surface-alt border-y border-th-line">
+      <div className="max-w-5xl mx-auto section-padding">
+        <SectionHeading
+          kicker="Experience"
+          title={experienceData.title}
+          description={experienceData.description}
+        />
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => {
-            const IconComponent = exp.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white/80 backdrop-blur-sm">
-                  <div className={`h-1 bg-gradient-to-r ${exp.color}`}></div>
-                  <CardContent className="p-8">
-                    <div className="flex flex-col lg:flex-row gap-6">
-                      <div className="flex-shrink-0">
-                        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${exp.color} flex items-center justify-center shadow-lg`}>
-                          <IconComponent className="w-7 h-7 text-white" />
+        <div className="relative">
+          {/* Timeline rail */}
+          <div className="absolute left-[27px] top-2 bottom-2 w-px bg-th-line hidden md:block" />
+
+          <div className="space-y-6">
+            {experiences.map((exp, index) => {
+              const IconComponent = exp.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  className="relative flex gap-5"
+                >
+                  <span className="icon-tile h-14 w-14 flex-shrink-0 relative z-10 bg-th-surface">
+                    <IconComponent className="h-6 w-6" />
+                  </span>
+
+                  <div className="editorial-card flex-1 p-6 md:p-7">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-3 mb-1">
+                          <h3 className="font-serif text-xl text-th-heading">{exp.title}</h3>
+                          {exp.current && (
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-ac-pos/25 bg-ac-pos/10 px-2.5 py-0.5 text-[11px] font-medium text-ac-pos">
+                              <span className="h-1.5 w-1.5 rounded-full bg-ac-pos" />
+                              Current
+                            </span>
+                          )}
                         </div>
+                        <p className="font-display text-sm font-semibold tracking-wide text-th-body">
+                          {exp.company}
+                        </p>
                       </div>
 
-                      <div className="flex-1 space-y-4">
-                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2">
-                          <div>
-                            <div className="flex items-center gap-3 mb-2">
-                              <h3 className="text-xl font-bold text-slate-900">{exp.title}</h3>
-                              {exp.current && (
-                                <Badge className="bg-green-100 text-green-800 border-green-200">
-                                  Current
-                                </Badge>
-                              )}
-                            </div>
-                            <p className="text-lg font-semibold text-blue-600 mb-1">{exp.company}</p>
-                          </div>
-                          
-                          <div className="text-sm text-slate-500 space-y-1">
-                            <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4" />
-                              {exp.period}
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4" />
-                              {exp.location}
-                            </div>
-                          </div>
+                      <div className="text-sm text-th-muted space-y-1 lg:text-right">
+                        <div className="flex items-center gap-2 lg:justify-end">
+                          <Calendar className="h-4 w-4" />
+                          {exp.period}
                         </div>
-
-                        <p className="text-slate-600 leading-relaxed">{exp.description}</p>
-
-                        <div>
-                          <h4 className="font-semibold text-slate-900 mb-3">Key Achievements:</h4>
-                          <div className="grid md:grid-cols-2 gap-2">
-                            {exp.achievements.map((achievement, aIndex) => (
-                              <div key={aIndex} className="flex items-center gap-2 text-slate-600">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                                {achievement}
-                              </div>
-                            ))}
-                          </div>
+                        <div className="flex items-center gap-2 lg:justify-end">
+                          <MapPin className="h-4 w-4" />
+                          {exp.location}
                         </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
+
+                    <p className="mt-3 leading-relaxed text-th-body">{exp.description}</p>
+
+                    <div className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2">
+                      {exp.achievements.map((achievement, aIndex) => (
+                        <div key={aIndex} className="flex items-start gap-2.5 text-sm text-th-body">
+                          <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-th-heading/50" />
+                          {achievement}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
