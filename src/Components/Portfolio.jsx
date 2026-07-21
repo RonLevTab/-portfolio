@@ -35,6 +35,7 @@ export default function Portfolio() {
       }
     };
 
+    handleScroll(); // set correct nav state on mount (e.g. deep link / refresh mid-page)
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

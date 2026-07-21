@@ -1,9 +1,52 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { animate } from 'framer-motion';
 
 const cn = (...classes) => classes.filter(Boolean).join(' ');
 
-// Ported from petaron's "How it Works" bounding-box halo.
+// Shared pointer/scroll manager: ONE global listener + ONE rAF updates every
+// mounted GlowingEffect, instead of N cards each attaching their own listener
+// and scheduling their own frame (which forced N layout reads per mouse move).
+const instances = new Set();
+let listening = false;
+let rafId = 0;
+let lastX = 0;
+let lastY = 0;
+let hasPointer = false;
+
+function tick() {
+  rafId = 0;
+  instances.forEach((inst) => inst.update(lastX, lastY, hasPointer));
+}
+function schedule() {
+  if (rafId === 0) rafId = requestAnimationFrame(tick);
+}
+function onPointerMove(e) {
+  lastX = e.clientX;
+  lastY = e.clientY;
+  hasPointer = true;
+  schedule();
+}
+function onScroll() {
+  schedule();
+}
+function ensureListening() {
+  if (listening) return;
+  listening = true;
+  document.body.addEventListener('pointermove', onPointerMove, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+function maybeStopListening() {
+  if (!listening || instances.size > 0) return;
+  listening = false;
+  document.body.removeEventListener('pointermove', onPointerMove);
+  window.removeEventListener('scroll', onScroll);
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = 0;
+  }
+}
+
+// Ported from petaron's "How it Works" bounding-box halo (Aceternity UI).
 // Warm bronze/tan gradient to match the cream editorial theme.
 const GlowingEffect = memo(function GlowingEffect({
   blur = 0,
@@ -17,35 +60,24 @@ const GlowingEffect = memo(function GlowingEffect({
   disabled = false,
 }) {
   const containerRef = useRef(null);
-  const lastPosition = useRef({ x: 0, y: 0 });
-  const animationFrameRef = useRef(0);
 
-  const handleMove = useCallback(
-    (e) => {
-      if (!containerRef.current) return;
+  useEffect(() => {
+    if (disabled) return undefined;
+    const el = containerRef.current;
+    if (!el) return undefined;
+    let controls = null;
 
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-
-      animationFrameRef.current = requestAnimationFrame(() => {
-        const element = containerRef.current;
-        if (!element) return;
-
-        const { left, top, width, height } = element.getBoundingClientRect();
-        const mouseX = e && 'x' in e ? e.x : lastPosition.current.x;
-        const mouseY = e && 'y' in e ? e.y : lastPosition.current.y;
-
-        if (e) {
-          lastPosition.current = { x: mouseX, y: mouseY };
-        }
-
-        const center = [left + width * 0.5, top + height * 0.5];
-        const distanceFromCenter = Math.hypot(mouseX - center[0], mouseY - center[1]);
+    const inst = {
+      update(mouseX, mouseY, pointerKnown) {
+        if (!pointerKnown) return;
+        const { left, top, width, height } = el.getBoundingClientRect();
+        const cx = left + width * 0.5;
+        const cy = top + height * 0.5;
+        const distanceFromCenter = Math.hypot(mouseX - cx, mouseY - cy);
         const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
 
         if (distanceFromCenter < inactiveRadius) {
-          element.style.setProperty('--active', '0');
+          el.style.setProperty('--active', '0');
           return;
         }
 
@@ -55,46 +87,34 @@ const GlowingEffect = memo(function GlowingEffect({
           mouseY > top - proximity &&
           mouseY < top + height + proximity;
 
-        element.style.setProperty('--active', isActive ? '1' : '0');
-
+        el.style.setProperty('--active', isActive ? '1' : '0');
         if (!isActive) return;
 
-        const currentAngle = parseFloat(element.style.getPropertyValue('--start')) || 0;
-        const targetAngle =
-          (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) / Math.PI + 90;
-
-        const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
+        const currentAngle = parseFloat(el.style.getPropertyValue('--start')) || 0;
+        const targetAngle = (180 * Math.atan2(mouseY - cy, mouseX - cx)) / Math.PI + 90;
+        // Euclidean modulo keeps the delta in [-180, 180) so the glow always
+        // takes the short way round (plain JS % is signed and can go the long way).
+        const angleDiff = ((((targetAngle - currentAngle) % 360) + 540) % 360) - 180;
         const newAngle = currentAngle + angleDiff;
 
-        animate(currentAngle, newAngle, {
+        controls?.stop();
+        controls = animate(currentAngle, newAngle, {
           duration: movementDuration,
           ease: [0.16, 1, 0.3, 1],
-          onUpdate: (value) => {
-            element.style.setProperty('--start', String(value));
-          },
+          onUpdate: (value) => el.style.setProperty('--start', String(value)),
         });
-      });
-    },
-    [inactiveZone, proximity, movementDuration]
-  );
+      },
+    };
 
-  useEffect(() => {
-    if (disabled) return;
-
-    const handleScroll = () => handleMove();
-    const handlePointerMove = (e) => handleMove(e);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.body.addEventListener('pointermove', handlePointerMove, { passive: true });
+    instances.add(inst);
+    ensureListening();
 
     return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      window.removeEventListener('scroll', handleScroll);
-      document.body.removeEventListener('pointermove', handlePointerMove);
+      controls?.stop();
+      instances.delete(inst);
+      maybeStopListening();
     };
-  }, [handleMove, disabled]);
+  }, [disabled, inactiveZone, proximity, movementDuration]);
 
   return (
     <div
@@ -121,23 +141,11 @@ const GlowingEffect = memo(function GlowingEffect({
       }}
       className={cn(
         'pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity',
-        glow && 'opacity-100',
         blur > 0 && 'blur-[var(--blur)]',
-        className
+        className,
       )}
     >
-      <div
-        className={cn(
-          'rounded-[inherit]',
-          'after:content-[""] after:rounded-[inherit] after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
-          'after:[border:var(--glowingeffect-border-width)_solid_transparent]',
-          'after:[background:var(--gradient)] after:[background-attachment:fixed]',
-          'after:opacity-[var(--active)] after:transition-opacity after:duration-300',
-          'after:[mask-clip:padding-box,border-box]',
-          'after:[mask-composite:intersect]',
-          'after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*2deg))]'
-        )}
-      />
+      <div className="glow-slice rounded-[inherit]" />
     </div>
   );
 });
