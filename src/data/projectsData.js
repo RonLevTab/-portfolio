@@ -3,8 +3,8 @@ export const projectsData = {
   description: "Showcasing innovative solutions in AI",
   projects: [
     {
-      title: "Petaron.ai — AI Order Processing for Freight Forwarders",
-      description: "Co-founder and developer of Petaron.ai, an AI agent that automates freight order entry end to end — reading incoming emails and PDFs, structuring and validating order data, and preparing TMS-ready drafts for human approval.",
+      title: "Petaron.ai - AI Order Processing for Freight Forwarders",
+      description: "Co-founder and developer of Petaron.ai, an AI agent that automates freight order entry end to end: reading incoming emails and PDFs, structuring and validating order data, and preparing TMS-ready drafts for human approval.",
       icon: "Truck",
       status: "2025 – Present",
       technologies: ["AI Agents", "LLM APIs", "Python", "NLP", "React"],
@@ -35,7 +35,7 @@ export const projectsData = {
     },
     {
       title: "AI-Powered Website Building",
-      description: "Designing, building, and deploying modern, responsive websites with AI-assisted development workflows — including irisonthemove.nl for a travel influencer and the Petaron.ai product site.",
+      description: "Designing, building, and deploying modern, responsive websites with AI-assisted development workflows, including irisonthemove.nl for a travel influencer and the Petaron.ai product site.",
       icon: "Globe",
       status: "Apr 2026",
       technologies: ["React", "AI Development", "Tailwind CSS", "Web Design"],

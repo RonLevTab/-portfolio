@@ -91,7 +91,7 @@
       inset 0 1px 0 rgb(255 255 255 / 0.6);
   }
 
-  /* Standard editorial card — identical shadow to petaron's "How it works" card */
+  /* Standard editorial card - identical shadow to petaron's "How it works" card */
   .editorial-card {
     @apply rounded-2xl border-[0.75px] border-th-line-subtle bg-th-surface transition-colors duration-300;
     box-shadow: 0px 0px 27px 0px rgba(45, 45, 45, 0.15);

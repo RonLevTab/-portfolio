@@ -10,7 +10,7 @@ export const experienceData = {
       icon: "Rocket",
       color: "from-amber-500 to-orange-500",
       current: true,
-      description: "Co-founding Petaron.ai, an AI agent that automates freight order entry — leading across marketing, web design, client relationships, and technical development. Hands-on in every aspect of building the startup.",
+      description: "Co-founding Petaron.ai, an AI agent that automates freight order entry, leading across marketing, web design, client relationships, and technical development. Hands-on in every aspect of building the startup.",
       achievements: [
         "Marketing, branding, and go-to-market",
         "Web design and front-end development",

@@ -1,7 +1,7 @@
 import React from 'react';
 import FloatingDots from './FloatingDots';
 
-// A giant faint wordmark with drifting sparkle particles — the page's finale.
+// A giant faint wordmark with drifting sparkle particles; the page's finale.
 export default function SparklesFinale({
   text = 'Ron Lev Tabuchov',
   particleCount = 60,

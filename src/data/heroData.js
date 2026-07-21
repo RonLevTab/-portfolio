@@ -3,7 +3,7 @@ export const heroData = {
     main: "Data Science &",
     highlight: "AI Student"
   },
-  description: "Passionate about AI, machine learning, computer vision, data, agents, and building intelligent systems that solve real-world problems.",
+  description: "Co-founding Petaron.ai and building AI agents that automate real work, driven by a passion for machine learning, computer vision, data, and intelligent systems that solve real-world problems.",
   buttons: {
     primary: {
       text: "Get In Touch",

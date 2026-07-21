@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Editorial section heading — kicker label, serif title, muted description.
+// Editorial section heading: kicker label, serif title, muted description.
 export default function SectionHeading({ title, description, align = 'center' }) {
   const alignment = align === 'left' ? 'text-left items-start' : 'text-center items-center';
   return (

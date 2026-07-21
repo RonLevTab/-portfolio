@@ -3,7 +3,7 @@ import React from 'react';
 // Ported from Magic UI's "Interactive Hover Button" (via petaron's demo):
 // an expanding dot that fills the button on hover, plus a shine sweep.
 // The fill inverts the button: a dark button turns white on hover, and a
-// light button turns dark — text colour flips to stay readable.
+// light button turns dark; text colour flips to stay readable.
 const VARIANTS = {
   dark: {
     base: 'bg-ac-1 text-th-page border border-ac-1',

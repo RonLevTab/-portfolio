@@ -7,8 +7,8 @@ export const contactData = {
     {
       icon: "Mail",
       label: "Email",
-      value: "Ronlevtab@gmail.com",
-      href: "mailto:Ronlevtab@gmail.com",
+      value: "ronlevtab@gmail.com",
+      href: "mailto:ronlevtab@gmail.com",
       color: "from-blue-500 to-indigo-500"
     },
     {
