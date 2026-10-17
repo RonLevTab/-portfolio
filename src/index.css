@@ -122,7 +122,7 @@
 
   /* blue brand square, as the nav mark */
   .logo-mark {
-    @apply grid place-items-center rounded-lg bg-ac-1 font-display font-semibold text-white;
+    @apply grid place-items-center rounded-full bg-ac-1 font-display font-semibold text-white;
   }
 
   /* the big blue panel: white on blue */

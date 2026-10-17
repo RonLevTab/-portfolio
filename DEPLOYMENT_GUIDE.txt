@@ -1,0 +1,63 @@
+================================================================================
+DEPLOYMENT GUIDE - Ron Lev Tabuchov Portfolio
+================================================================================
+
+The live site, https://www.ronlevtab.com, is hosted on VERCEL and deploys
+straight from GitHub. There is nothing to build or upload by hand.
+
+    GitHub repo:   github.com/RonLevTab/-portfolio
+    Branch:        master
+    Live site:     https://www.ronlevtab.com
+                   (https://ronlevtab.com redirects to the www address)
+
+(The site used to be uploaded to Hostinger by hand. That is no longer how it
+works, so ignore any old instructions about public_html, FTP or hPanel.)
+
+================================================================================
+HOW TO PUBLISH A CHANGE
+================================================================================
+
+1. Make the change and check it locally:
+
+       npm start                 opens http://localhost:3000 and reloads as you edit
+
+2. Make sure it builds without errors (optional, but catches mistakes before
+   they reach the live site):
+
+       npm run build
+
+3. Commit and push to master:
+
+       git add -A
+       git commit -m "Describe the change"
+       git push origin master
+
+4. Vercel picks up the push, builds the site from the code on GitHub and
+   publishes it. This usually takes a minute or two.
+
+================================================================================
+CHECKING THAT IT WENT LIVE
+================================================================================
+
+- Open https://www.ronlevtab.com and hard-refresh (Ctrl+F5) so the browser
+  doesn't show its saved copy.
+- Or open the project in the Vercel dashboard (vercel.com) and check that the
+  latest deployment matches your commit and says "Ready".
+- If a build fails on Vercel, the live site keeps the previous version. The
+  deployment's build log in the dashboard shows the error.
+
+Note: the browser-tab icon is cached stubbornly. A new icon can take a while
+to appear even after the rest of the site has updated.
+
+================================================================================
+WHAT LIVES WHERE
+================================================================================
+
+    src/data/*.js        all the text: hero, about, skills, projects,
+                         experience, education, contact
+    src/assets/images/   the portrait photo
+    public/              favicon, app icons, manifest, robots.txt, sitemap.xml
+    build/               created by "npm run build" for local checking only;
+                         it is ignored by git and never needs uploading
+
+================================================================================

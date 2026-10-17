@@ -9,11 +9,7 @@ export default function ContactSection() {
   const { contactInfo, footer } = contactData;
   const email = contactInfo.find((c) => c.icon === 'Mail');
   const linkedin = contactInfo.find((c) => c.icon === 'Linkedin');
-  const initials = navigationData.brand
-    .split(' ')
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join('');
+  const monogram = navigationData.brand[0];
 
   return (
     <section id="contact" className={`relative scroll-mt-24 pb-10 pt-20 ${SHELL}`}>
@@ -70,7 +66,7 @@ export default function ContactSection() {
 
       <footer className="mt-16 flex flex-col gap-4 border-t border-th-line pt-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="logo-mark h-7 w-7 text-[10px]">{initials}</span>
+          <span className="logo-mark h-7 w-7 text-[13px]">{monogram}</span>
           <span className="font-body text-[14px] text-th-heading">{footer.name}</span>
         </div>
         <p className="font-body text-[12px] text-th-muted">{footer.copyright}</p>

@@ -76,11 +76,7 @@ export default function Portfolio() {
     });
   };
 
-  const initials = navigationData.brand
-    .split(' ')
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join('');
+  const monogram = navigationData.brand[0];
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-th-page text-th-heading">
@@ -99,7 +95,7 @@ export default function Portfolio() {
               className="flex items-center gap-2.5 rounded-full py-1 pl-1 pr-3"
               aria-label={`${navigationData.brand}, back to top`}
             >
-              <span className="logo-mark h-9 w-9 text-[13px]">{initials}</span>
+              <span className="logo-mark h-9 w-9 text-[17px]">{monogram}</span>
               <span className="hidden font-body text-[16px] font-medium tracking-tight text-th-heading sm:block">
                 {navigationData.brand}
               </span>
