@@ -1,51 +1,30 @@
 export const skillsData = {
   title: "Technical Skills",
-  description: "A comprehensive toolkit spanning data science, artificial intelligence, and software development",
+  description: "Data science, AI and the tools to ship it.",
   categories: [
     {
-      title: "Programming Languages",
-      icon: "Code",
-      color: "from-blue-500 to-blue-600",
+      title: "Programming",
       skills: ["Python", "SQL", "HTML/CSS"]
     },
     {
-      title: "Data & Analytics",
-      icon: "BarChart3",
-      color: "from-green-500 to-green-600",
-      skills: ["PowerBI", "Data Lakes", "Data Warehouses", "SQL Queries", "Data Visualization"]
+      title: "AI & Machine Learning",
+      skills: ["Machine Learning", "Computer Vision", "NLP", "Deep Learning", "Reinforcement Learning", "LLM APIs", "AI Agents"]
     },
     {
-      title: "AI & Machine Learning",
-      icon: "Brain",
-      color: "from-purple-500 to-purple-600",
-      skills: ["Machine Learning", "Computer Vision", "NLP", "Deep Learning", "Reinforcement Learning", "LLM APIs"]
+      title: "Data & Analytics",
+      skills: ["Power BI", "Data Lakes", "Data Warehouses", "Data Visualization", "Data Engineering"]
     },
     {
       title: "Development Tools",
-      icon: "Settings",
-      color: "from-indigo-500 to-indigo-600",
-      skills: ["Git/GitHub", "Docker", "VS Code", "Cursor", "Azure DevOps", "AzureML"]
+      skills: ["Git/GitHub", "Docker", "VS Code", "Cursor", "Azure DevOps", "Azure ML"]
     },
     {
-      title: "Web Technologies",
-      icon: "Globe",
-      color: "from-orange-500 to-orange-600",
-      skills: ["WordPress", "Wix", "SEO", "Web Development"]
+      title: "Web",
+      skills: ["React", "Tailwind CSS", "WordPress", "Wix", "SEO"]
     },
     {
-      title: "Project Management",
-      icon: "Zap",
-      color: "from-pink-500 to-pink-600",
-      skills: ["Microsoft Teams", "Trello", "Agile/Scrum", "Technical Documentation"]
+      title: "Ways of Working",
+      skills: ["Agile/Scrum", "Trello", "Microsoft Teams", "Technical Documentation"]
     }
   ]
 };
-
-
-
-
-
-
-
-
-

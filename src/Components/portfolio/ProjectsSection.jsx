@@ -1,130 +1,73 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Bot, Eye, Globe, Award, Calendar, Search, Sprout, Shield, MessageSquare, BarChart, ArrowUpRight, Trophy, Truck } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { projectsData } from '../../data';
-import SectionHeading from './SectionHeading';
+import { SHELL, SectionIntro, Reveal, PillButton } from './shared';
 import { GlowingEffect } from './GlowingEffect';
-import InteractiveHoverButton from './InteractiveHoverButton';
+
+/** every outbound link of a project, in one shape */
+const linksOf = (project) => [
+  ...(project.link ? [{ label: 'View project', url: project.link }] : []),
+  ...(project.links || []),
+];
+
+const Links = ({ project }) => {
+  const links = linksOf(project);
+  return links.length ? (
+    <div className="mt-auto flex flex-wrap gap-2 pt-2">
+      {links.map((l) => (
+        <PillButton key={l.url} variant="ghost" size="sm" href={l.url}>
+          {l.label}
+          <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+        </PillButton>
+      ))}
+    </div>
+  ) : null;
+};
+
+/** year, and the award if there is one, as one quiet line */
+const Meta = ({ project }) => (
+  <p className="flex flex-wrap items-center gap-x-2 font-body text-[13px] text-th-muted">
+    <span className="font-mono text-[12px]">{project.status}</span>
+    {project.awards?.length > 0 && (
+      <>
+        <span aria-hidden="true" className="text-th-faint">
+          ·
+        </span>
+        <span className="font-medium text-ac-ink">{project.awards.join(' · ')}</span>
+      </>
+    )}
+  </p>
+);
 
 export default function ProjectsSection() {
-  const iconMap = { Bot, Eye, Globe, Search, Sprout, Shield, MessageSquare, BarChart, Truck };
-
-  const projects = projectsData.projects.map((project) => ({
-    ...project,
-    icon: iconMap[project.icon],
-  }));
-
+  const [featured, ...rest] = projectsData.projects;
   return (
-    <section id="projects" className="py-16 md:py-20 bg-th-page">
-      <div className="max-w-6xl mx-auto section-padding">
-        <SectionHeading title={projectsData.title} description={projectsData.description} />
+    <section id="projects" className={`relative scroll-mt-24 py-20 ${SHELL}`}>
+      <SectionIntro title={projectsData.title} aside={projectsData.description} />
 
-        <div className="space-y-6">
-          {projects.map((project, index) => {
-            const IconComponent = project.icon;
-            return (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: (index % 3) * 0.1 }}
-                viewport={{ once: true }}
-                className="relative rounded-xl border-[0.75px] border-th-line p-1.5 md:rounded-2xl md:p-2"
-              >
-                <GlowingEffect
-                  spread={40}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                  borderWidth={2}
-                />
-                <div className="relative flex h-full flex-col overflow-hidden rounded-lg border-[0.75px] border-th-line-subtle bg-th-surface p-7 md:p-9 shadow-[0px_0px_27px_0px_rgba(45,45,45,0.15)]">
-                  <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="lg:w-52 flex-shrink-0 space-y-3">
-                    <span className="icon-tile h-14 w-14">
-                      <IconComponent className="h-6 w-6" />
-                    </span>
-                    <div className="flex items-center gap-2 text-sm text-th-muted">
-                      <Calendar className="h-4 w-4" />
-                      {project.status}
-                    </div>
-                    {project.award && (
-                      <div className="inline-flex items-center gap-1.5 rounded-full border border-th-line bg-th-surface-alt px-3 py-1 text-xs font-medium text-th-heading">
-                        <Award className="h-3.5 w-3.5" />
-                        {project.award}
-                      </div>
-                    )}
-                    {project.awards &&
-                      project.awards.map((awardItem, aIndex) => (
-                        <div
-                          key={aIndex}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-th-line bg-th-surface-alt px-3 py-1 text-xs font-medium text-th-heading mr-1.5"
-                        >
-                          <Trophy className="h-3.5 w-3.5" />
-                          {awardItem}
-                        </div>
-                      ))}
-                  </div>
+      <div className="mt-12 grid gap-5 md:grid-cols-2">
+        {/* the first project opens the grid across both columns */}
+        <Reveal as="article" className="glass-card flex flex-col gap-5 p-6 md:col-span-2 md:p-9">
+          <GlowingEffect spread={40} proximity={64} inactiveZone={0.01} borderWidth={2} />
+          <Meta project={featured} />
+          <div className="max-w-3xl">
+            <h3 className="text-[26px] leading-[1.12] tracking-[-0.03em] text-th-heading sm:text-[32px]">{featured.title}</h3>
+            <p className="mt-3 font-body text-[16px] leading-relaxed text-th-body md:text-[17px]">{featured.description}</p>
+          </div>
+          <Links project={featured} />
+        </Reveal>
 
-                  <div className="flex-1 space-y-5">
-                    <div>
-                      <h3 className="font-serif text-2xl text-th-heading mb-2">{project.title}</h3>
-                      <p className="text-lg leading-relaxed text-th-body">{project.description}</p>
-                    </div>
-
-                    <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
-                      {project.highlights.map((highlight, hIndex) => (
-                        <li key={hIndex} className="flex items-start gap-2.5 text-th-body">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-th-heading/50" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className="tech-tag">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-wrap gap-3 pt-1">
-                      {project.link && (
-                        <InteractiveHoverButton
-                          href={project.link}
-                          variant="light"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="!px-5 !py-2.5 !text-[12px]"
-                        >
-                          View project
-                          <ArrowUpRight className="h-4 w-4" />
-                        </InteractiveHoverButton>
-                      )}
-                      {project.links &&
-                        project.links.map((linkItem, lIndex) => (
-                          <InteractiveHoverButton
-                            key={lIndex}
-                            href={linkItem.url}
-                            variant="light"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="!px-5 !py-2.5 !text-[12px]"
-                          >
-                            {linkItem.label}
-                            <ArrowUpRight className="h-4 w-4" />
-                          </InteractiveHoverButton>
-                        ))}
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </motion.article>
-            );
-          })}
-        </div>
+        {rest.map((project, index) => (
+          <Reveal as="article" key={project.title} delay={0.05 * (index % 2)} className="glass-card flex flex-col gap-4 p-6 md:p-7">
+            <GlowingEffect spread={40} proximity={64} inactiveZone={0.01} borderWidth={2} />
+            <Meta project={project} />
+            <div>
+              <h3 className="text-[20px] leading-[1.2] tracking-[-0.02em] text-th-heading">{project.title}</h3>
+              <p className="mt-2 font-body text-[14.5px] leading-relaxed text-th-body">{project.description}</p>
+            </div>
+            <Links project={project} />
+          </Reveal>
+        ))}
       </div>
     </section>
   );

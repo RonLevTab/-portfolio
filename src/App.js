@@ -3,7 +3,7 @@ import Portfolio from './Components/Portfolio';
 
 function App() {
   return (
-    <div className="App overflow-x-hidden w-full">
+    <div className="App overflow-x-clip w-full">
       <Portfolio />
     </div>
   );

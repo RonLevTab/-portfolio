@@ -1,6 +1,6 @@
 export const educationData = {
   title: "Education",
-  description: "Academic foundation in data science, artificial intelligence, and interdisciplinary studies",
+  description: "Data science and AI, on a broad foundation.",
   education: [
     {
       degree: "BSc Data Science & Artificial Intelligence",
@@ -8,38 +8,20 @@ export const educationData = {
       location: "Breda, Netherlands",
       period: "Sep 2023 – Jul 2027",
       status: "In Progress",
-      icon: "GraduationCap",
-      color: "from-blue-500 to-indigo-500",
       achievements: [
-        "Degree Program Committee (DPC) member since Year 1",
-        "Contributing to curriculum decisions and NVAO accreditation success",
-        "Top 6 Business Ideas Award (April 2024)",
-        "Agentic Order Entry System - Best Business Value & Best Innovation Awards",
-        "AI Intern placement at TriGlobal, Dordrecht"
+        "Degree Programme Committee member since Year 1.",
+        "Top 6 Business Ideas Award (2024); Best Business Value and Best Innovation for the agentic order entry system."
       ],
-      coursework: [
-        "Machine Learning",
-        "Computer Vision",
-        "Reinforcement Learning",
-        "AI Agents",
-        "NLP",
-        "Data Engineering",
-        "Database Systems",
-        "SEO"
-      ]
+      coursework: ["Machine Learning", "Computer Vision", "Reinforcement Learning", "AI Agents", "NLP", "Data Engineering", "Database Systems"]
     },
     {
       degree: "Te'udat Bagrut Certificate",
-      institution: "Misgav High-school",
+      institution: "Misgav High School",
       location: "Israel",
       period: "Graduated 2014",
       status: "Completed",
-      icon: "GraduationCap",
-      color: "from-green-500 to-teal-500",
       achievements: [
-        "Earned certificate with extra subjects in Sport and Biology",
-        "Studied philosophy, theory, and physical training aspects of sports",
-        "Biological sciences focus"
+        "Extra subjects in Sport and Biology."
       ]
     }
   ]

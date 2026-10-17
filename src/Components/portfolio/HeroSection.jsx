@@ -1,105 +1,72 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
-import { heroData } from '../../data';
-import FloatingDots from './FloatingDots';
-import InteractiveHoverButton from './InteractiveHoverButton';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { heroData, navigationData } from '../../data';
+import { SHELL, PillButton } from './shared';
+import portrait from '../../assets/images/portrait.jpg';
 
+/** First screen: name, headline, one line about Ron and two actions, beside his portrait. */
 export default function HeroSection() {
+  const reduced = useReducedMotion();
+  const { title, description, buttons } = heroData;
+
+  const rise = (delay) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18, filter: 'blur(8px)' },
+          animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
+          transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] },
+        };
+
   const scrollTo = (id) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById(id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 aurora-frame"
-    >
-      {/* Background texture */}
-      <div className="pointer-events-none absolute inset-0 animated-grid opacity-70" />
-      <FloatingDots count={45} />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
-        style={{
-          background:
-            'radial-gradient(60% 60% at 50% 0%, rgb(120 113 108 / 0.10), transparent 70%)',
-        }}
-      />
-
-      <div className="relative max-w-4xl mx-auto section-padding text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.8 }}
-          className="text-5xl md:text-7xl font-normal leading-[1.02] tracking-tight text-th-heading"
-        >
-          {heroData.title.main}
-          <span className="block mt-1 font-italic-serif hero-gradient-text">
-            {heroData.title.highlight}
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.35, duration: 0.8 }}
-          className="mx-auto mt-7 max-w-2xl text-lg md:text-xl leading-relaxed text-th-body"
-        >
-          {heroData.description}
-        </motion.p>
+    <section id="hero" data-flow-head className="relative flex min-h-[86svh] flex-col justify-center pb-16 pt-28 md:pt-36">
+      <div className={`${SHELL} grid items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16`}>
+        <div>
+          <motion.p {...rise(0.1)} className="font-body text-[14px] font-medium text-ac-ink">
+            {navigationData.brand}
+          </motion.p>
+          <h1 className="mt-5 text-[clamp(2.75rem,5.4vw,4.75rem)] leading-[1.02] text-th-heading">
+            <motion.span {...rise(0.2)} className="block">
+              {title.main}
+            </motion.span>
+            <motion.span
+              {...rise(0.35)}
+              className="block font-serif text-[1.1em] font-light tracking-[-0.03em] text-th-heading/85"
+            >
+              {title.highlight}
+            </motion.span>
+          </h1>
+          <motion.p {...rise(0.5)} className="mt-7 max-w-xl font-body text-[17px] leading-relaxed text-th-body md:text-[18px]">
+            {description}
+          </motion.p>
+          <motion.div {...rise(0.65)} className="mt-9 flex flex-wrap items-center gap-3">
+            <PillButton onClick={() => scrollTo(buttons.primary.targetId)}>
+              {buttons.primary.text}
+              <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+            </PillButton>
+            <PillButton variant="ghost" onClick={() => scrollTo(buttons.secondary.targetId)}>
+              {buttons.secondary.text}
+            </PillButton>
+          </motion.div>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center"
+          {...rise(0.3)}
+          className="glass-card mx-auto w-full max-w-[340px] p-2.5 sm:max-w-[400px] lg:max-w-[440px] lg:justify-self-end"
         >
-          <InteractiveHoverButton onClick={() => scrollTo(heroData.buttons.primary.targetId)}>
-            {heroData.buttons.primary.text}
-            <ArrowUpRight className="h-4 w-4" />
-          </InteractiveHoverButton>
-          <button onClick={() => scrollTo('projects')} className="btn-ghost">
-            View projects
-          </button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="mt-16 grid grid-cols-3 gap-4 max-w-2xl mx-auto"
-        >
-          {heroData.stats.map((stat, index) => {
-            const isLong = stat.value.length > 6;
-            return (
-              <div
-                key={index}
-                className="editorial-card px-4 py-6 flex flex-col items-center justify-center text-center"
-              >
-                <div
-                  className={`font-serif text-th-heading leading-[1.05] ${
-                    isLong ? 'text-xl md:text-2xl' : 'text-3xl md:text-4xl'
-                  }`}
-                >
-                  {stat.value}
-                </div>
-                <div className="mt-1.5 font-display text-[11px] uppercase tracking-[0.16em] text-th-muted">
-                  {stat.label}
-                </div>
-              </div>
-            );
-          })}
+          <img
+            src={portrait}
+            alt={`Portrait of ${navigationData.brand}`}
+            width={880}
+            height={1100}
+            className="block aspect-[4/5] w-full rounded-[16px] object-cover"
+          />
         </motion.div>
       </div>
-
-      <motion.button
-        onClick={() => scrollTo('about')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-th-muted hover:text-th-heading transition-colors"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        aria-label="Scroll to about"
-      >
-        <ArrowDown className="h-5 w-5" />
-      </motion.button>
     </section>
   );
 }

@@ -1,48 +1,22 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Code, Brain, BarChart3, Globe, Settings, Zap } from 'lucide-react';
 import { skillsData } from '../../data';
-import SectionHeading from './SectionHeading';
+import { SHELL, SectionIntro, Reveal } from './shared';
+import { GlowingEffect } from './GlowingEffect';
 
+/** Six calm cards: a title and one plain line of what is in it. */
 export default function SkillsSection() {
-  const iconMap = { Code, Brain, BarChart3, Globe, Settings, Zap };
-
   return (
-    <section id="skills" className="py-16 md:py-20 bg-th-surface-alt border-y border-th-line">
-      <div className="max-w-6xl mx-auto section-padding">
-        <SectionHeading title={skillsData.title} description={skillsData.description} />
+    <section id="skills" className={`relative scroll-mt-24 py-20 ${SHELL}`}>
+      <SectionIntro align="center" title={skillsData.title} aside={skillsData.description} />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillsData.categories.map((category, index) => {
-            const IconComponent = iconMap[category.icon];
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="editorial-card p-7 h-full"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="icon-tile h-11 w-11">
-                    <IconComponent className="h-5 w-5" />
-                  </span>
-                  <h3 className="font-serif text-xl text-th-heading">{category.title}</h3>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span key={skillIndex} className="tech-tag">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {skillsData.categories.map((category, index) => (
+          <Reveal key={category.title} delay={0.05 * index} className="glass-card flex flex-col gap-3 p-6 md:p-7">
+            <GlowingEffect spread={40} proximity={64} inactiveZone={0.01} borderWidth={2} />
+            <h3 className="text-[19px] tracking-[-0.02em] text-th-heading">{category.title}</h3>
+            <p className="font-body text-[15px] leading-relaxed text-th-body">{category.skills.join(', ')}</p>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

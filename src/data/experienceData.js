@@ -1,22 +1,16 @@
 export const experienceData = {
   title: "Professional Experience",
-  description: "Building leadership skills through diverse roles across AI, retail, military, and academic environments",
+  description: "AI, academia, retail and the military.",
   experiences: [
     {
       title: "Co-Founder",
       company: "Petaron.ai",
       location: "Netherlands",
       period: "2025 – Present",
-      icon: "Rocket",
-      color: "from-amber-500 to-orange-500",
       current: true,
-      description: "Co-founding Petaron.ai, an AI agent that automates freight order entry, leading across marketing, web design, client relationships, and technical development. Hands-on in every aspect of building the startup.",
       achievements: [
-        "Marketing, branding, and go-to-market",
-        "Web design and front-end development",
-        "Client relationships and onboarding",
-        "Technical build of the AI product",
-        "Involved end-to-end in every part of the business"
+        "Building an AI agent that automates freight order entry, from email and PDF to TMS-ready drafts.",
+        "Hands-on across product, technical build, marketing, web and client onboarding."
       ]
     },
     {
@@ -24,34 +18,20 @@ export const experienceData = {
       company: "TriGlobal",
       location: "Dordrecht, Netherlands",
       period: "Feb 2026 – Jul 2026",
-      icon: "Bot",
-      color: "from-blue-600 to-cyan-500",
-      current: false,
-      description: "Designing and developing AI agents and automating processes across different parts of the company",
       achievements: [
-        "Built multiple AI agents for process automation",
-        "Automatic Matching with address validation",
-        "Portal Remark Agent for data analysis",
-        "Quote Analysis and Comparison agents",
-        "Proof of Move Agent using computer vision",
-        "Volume Estimation with CV and depth estimation",
-        "Integration into Laravel/PHP infrastructure"
+        "Built AI agents for address matching, quote analysis and comparison, and proof of move with computer vision.",
+        "Integrated them into the company's Laravel/PHP systems."
       ]
     },
     {
-      title: "Degree Program Committee (DPC) Member",
+      title: "Degree Programme Committee Member",
       company: "Breda University of Applied Sciences",
       location: "Breda, Netherlands",
       period: "2023 – Present",
-      icon: "GraduationCap",
-      color: "from-indigo-500 to-purple-500",
       current: true,
-      description: "Contributing to curriculum decisions and NVAO accreditation success as DPC member since Year 1",
       achievements: [
-        "Active participation in curriculum development",
-        "Contributing to NVAO accreditation process",
-        "Student representation in program decisions",
-        "Quality assurance and program improvement"
+        "Student voice in curriculum decisions since Year 1.",
+        "Contributed to the programme's NVAO accreditation."
       ]
     },
     {
@@ -59,44 +39,27 @@ export const experienceData = {
       company: "Mango",
       location: "Breda, Netherlands",
       period: "Sep 2023 – Present",
-      icon: "Briefcase",
-      color: "from-blue-500 to-indigo-500",
       current: true,
-      description: "Deliver excellent customer service while managing multiple priorities in fast-paced retail environment",
       achievements: [
-        "Excellent customer service delivery",
-        "Multi-priority management",
-        "Fast-paced environment handling"
+        "Customer service and multiple priorities in a fast-paced store."
       ]
     },
     {
       title: "Head Cashier",
       company: "Zara",
-      location: "Breda, Netherlands", 
+      location: "Breda, Netherlands",
       period: "2020 – 2023",
-      icon: "Star",
-      color: "from-purple-500 to-pink-500",
-      description: "Managed financial transactions and cash flow, trained team members, ensured operational efficiency",
       achievements: [
-        "Financial transaction management",
-        "Team member training",
-        "Operational efficiency optimization",
-        "Leadership in high-pressure environment"
+        "Managed transactions and cash flow, trained team members."
       ]
     },
     {
-      title: "Security Guard at the Ministry of Defence",
+      title: "Security Guard",
       company: "Ministry of Defence",
       location: "Tel Aviv, Israel",
       period: "2019 – 2020",
-      icon: "ShieldCheck",
-      color: "from-orange-500 to-red-500",
-      description: "Provided high-level security for government facilities, government officials, and handling classified operations. Certification from the College of Counter-Terrorism.",
       achievements: [
-        "Security for government facilities",
-        "Protection of government officials",
-        "Classified operations handling",
-        "Counter-Terrorism certification"
+        "Security for government facilities and officials; certified by the College of Counter-Terrorism."
       ]
     },
     {
@@ -104,14 +67,8 @@ export const experienceData = {
       company: "Israel Defense Forces",
       location: "Israel",
       period: "2014 – 2018",
-      icon: "Shield",
-      color: "from-green-500 to-teal-500",
-      description: "Led platoons after completing Officers Course, managing complex operations under pressure",
       achievements: [
-        "Led squads, trained soldiers and officers",
-        "Complex operations management",
-        "Decision-making under pressure",
-        "Advanced combat and rescue skills"
+        "Led platoons after Officers Course; trained soldiers and officers."
       ]
     }
   ]

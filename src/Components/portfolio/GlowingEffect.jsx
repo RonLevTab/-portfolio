@@ -46,8 +46,8 @@ function maybeStopListening() {
   }
 }
 
-// Ported from petaron's "How it Works" bounding-box halo (Aceternity UI).
-// Warm bronze/tan gradient to match the cream editorial theme.
+// A thin blue arc that runs along a card's outline toward the pointer
+// (Aceternity's glowing effect, without the glow). Styles: `.glow-slice`.
 const GlowingEffect = memo(function GlowingEffect({
   blur = 0,
   inactiveZone = 0.6,
@@ -98,8 +98,9 @@ const GlowingEffect = memo(function GlowingEffect({
         const newAngle = currentAngle + angleDiff;
 
         controls?.stop();
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         controls = animate(currentAngle, newAngle, {
-          duration: movementDuration,
+          duration: reduced ? 0 : movementDuration,
           ease: [0.16, 1, 0.3, 1],
           onUpdate: (value) => el.style.setProperty('--start', String(value)),
         });
@@ -126,17 +127,14 @@ const GlowingEffect = memo(function GlowingEffect({
         '--active': '0',
         '--glowingeffect-border-width': `${borderWidth}px`,
         '--repeating-conic-gradient-times': '5',
-        '--gradient': `radial-gradient(circle, #c9a66b 10%, #c9a66b00 20%),
-          radial-gradient(circle at 40% 40%, #b8895a 6%, #b8895a00 18%),
-          radial-gradient(circle at 60% 60%, #a8895f 8%, #a8895f00 18%),
-          radial-gradient(circle at 40% 60%, #8f7350 8%, #8f735000 20%),
-          repeating-conic-gradient(
+        // the accent blue, a paler tint and a slightly deeper blue; no glow, no halo
+        '--gradient': `repeating-conic-gradient(
             from 236.84deg at 50% 50%,
-            #c9a66b 0%,
-            #b8895a calc(25% / var(--repeating-conic-gradient-times)),
-            #a8895f calc(50% / var(--repeating-conic-gradient-times)),
-            #8f7350 calc(75% / var(--repeating-conic-gradient-times)),
-            #c9a66b calc(100% / var(--repeating-conic-gradient-times))
+            #2563eb 0%,
+            #93c5fd calc(25% / var(--repeating-conic-gradient-times)),
+            #1d4ed8 calc(50% / var(--repeating-conic-gradient-times)),
+            #60a5fa calc(75% / var(--repeating-conic-gradient-times)),
+            #2563eb calc(100% / var(--repeating-conic-gradient-times))
           )`,
       }}
       className={cn(
